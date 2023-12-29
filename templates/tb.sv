@@ -1,6 +1,5 @@
 `timescale 1ns/1ps
 
-`include "../rtl/defines.v"
 `include "../rtl/name.v"
 
 module tb_name;
@@ -13,7 +12,7 @@ module tb_name;
 
 
 	initial begin
-		$dumpfile("tb_name.vcd");
+		$dumpfile("wave_file/tb_name.vcd");
 		$dumpvars(0, tb_name);
 	end
 

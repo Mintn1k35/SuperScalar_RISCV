@@ -11,7 +11,7 @@ module:
 	@sed -i 's@name@$(name)@g' $(rtl_src)/$(name).v
 
 
-tb:
+testbench:
 	@cp $(templates_src)/tb.sv $(tb_src)/tb_$(name).sv
 	@sed -i 's@tb_name@tb_$(name)@g' $(tb_src)/tb_$(name).sv
 	@sed -i 's@name@$(name)@g' $(tb_src)/tb_$(name).sv

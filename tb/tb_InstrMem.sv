@@ -9,7 +9,7 @@ module tb_InstrMem;
 	logic 			clk;
 	logic 			rst_n;
 	logic 			arvalid;
-	logic [WIDTH-1:0]	araddr;
+	logic [31:0]	araddr;
 	logic [1:0] 		arburst;
 	logic [2:0] 		arsize;
 	logic [7:0]		arlen;
@@ -17,7 +17,7 @@ module tb_InstrMem;
 	// Output signals
 	logic 			arready;
 	logic 			rvalid;
-	logic [WIDTH-1:0]	rdata;
+	logic [31:0]	rdata;
 	logic 			rlast;
 	logic 			rresp;
 
@@ -38,9 +38,15 @@ module tb_InstrMem;
 		arvalid = 1'b1;
 		rready = 1'b0;
 		#(20)
-		araddr = 32'd1;
+		araddr = 32'd4;
 		arvalid = 1'b1;
 		rready = 1'b1;
+		#(20)
+		araddr = 32'd8;
+		#(20)
+		araddr = 32'd12;
+		#(20)
+		araddr = 32'd24;
 		#(1000)
 		$finish;
 	end

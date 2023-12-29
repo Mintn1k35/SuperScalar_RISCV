@@ -1,11 +1,10 @@
-`include "defines.v"
 module InstrMem (
 	input wire 		clk,
 	input wire 		rst_n,
 	
 	// Read address channel
 	input wire 		arvalid,
-	input wire [WIDTH-1:0] 	araddr,
+	input wire [31:0] 	araddr,
 	input wire [1:0] 	arburst, // arburst = 00
 	input wire [2:0]	arsize, // arsize = 2 -> 2^2, a transaction is 4 byte
 	input wire [7:0]	arlen, // the number of transaction
@@ -14,7 +13,7 @@ module InstrMem (
 	// Read data channel
 	input wire 		rready,
 	output reg 		rvalid,
-	output reg [WIDTH-1:0] rdata,
+	output reg [63:0] 	rdata,
 	output reg 		rlast,
 	output reg [1:0]	rresp
 );
@@ -29,7 +28,6 @@ module InstrMem (
 		if (!rst_n) begin
 			arready = 1'b1;
 			rvalid = 1'b0;
-			rdata = 32'dx;
 			rlast = 1'b0;
 			rresp = 2'd3;
 		end
@@ -44,7 +42,7 @@ module InstrMem (
 
 			if (arvalid & arready) begin // it's ready to receive araddr and araddr is valid -> Execute receiving address
 				rvalid = 1'b1;
-				rdata = rom[araddr];
+				rdata = { rom[araddr[31:2] + 1] , rom[araddr[31:2]] };
 				rresp = 2'd0;
 				rlast = 1'b1;
 			end

@@ -1,1 +1,0 @@
-parameter WIDTH = 32;

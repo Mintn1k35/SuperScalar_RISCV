@@ -1,6 +1,6 @@
 
 `include "define_module.v"
-module name(
+module AU(
 	// Input signals
 	
 
