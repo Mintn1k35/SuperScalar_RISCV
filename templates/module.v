@@ -1,5 +1,4 @@
 
-`include "define_module.v"
 module name(
 	// Input signals
 	
@@ -7,7 +6,7 @@ module name(
 
 	// Output signals	
 );
-endmodule
+endmodule: name
 
 
 

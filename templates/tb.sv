@@ -4,10 +4,10 @@
 
 module tb_name;
 
-	// Input signals
-	
+	Input
 
-	// Output signals
+
+	Output
 	
 
 
@@ -16,11 +16,17 @@ module tb_name;
 		$dumpvars(0, tb_name);
 	end
 
+	always #(10) clk = ~clk;
 	
 	initial begin
+		clk = 1'b0;
+		#(20)
 
+
+		#(100)
+		$finish;
 	end
 
 
-	name name_instance();
+	Instance;
 endmodule
