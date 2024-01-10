@@ -1,0 +1,1217 @@
+$date
+	Thu Jan  4 19:55:04 2024
+$end
+$version
+	Questa Intel Starter FPGA Edition Version 2021.2
+$end
+$timescale
+	1ps
+$end
+
+$scope module tb_Top $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 1 # jal $end
+$var reg 1 $ jalr_jcond $end
+$var reg 32 % jal_addr [31:0] $end
+$var reg 32 & jalr_jcond_addr [31:0] $end
+$var reg 1 ' busy $end
+$var reg 64 ( fetch_instr_pc [63:0] $end
+
+$scope module Top_instance $end
+$var wire 1 ) clk $end
+$var wire 1 * rst_n $end
+$var wire 1 + jal $end
+$var wire 1 , jalr_jcond $end
+$var wire 1 - jal_addr [31] $end
+$var wire 1 . jal_addr [30] $end
+$var wire 1 / jal_addr [29] $end
+$var wire 1 0 jal_addr [28] $end
+$var wire 1 1 jal_addr [27] $end
+$var wire 1 2 jal_addr [26] $end
+$var wire 1 3 jal_addr [25] $end
+$var wire 1 4 jal_addr [24] $end
+$var wire 1 5 jal_addr [23] $end
+$var wire 1 6 jal_addr [22] $end
+$var wire 1 7 jal_addr [21] $end
+$var wire 1 8 jal_addr [20] $end
+$var wire 1 9 jal_addr [19] $end
+$var wire 1 : jal_addr [18] $end
+$var wire 1 ; jal_addr [17] $end
+$var wire 1 < jal_addr [16] $end
+$var wire 1 = jal_addr [15] $end
+$var wire 1 > jal_addr [14] $end
+$var wire 1 ? jal_addr [13] $end
+$var wire 1 @ jal_addr [12] $end
+$var wire 1 A jal_addr [11] $end
+$var wire 1 B jal_addr [10] $end
+$var wire 1 C jal_addr [9] $end
+$var wire 1 D jal_addr [8] $end
+$var wire 1 E jal_addr [7] $end
+$var wire 1 F jal_addr [6] $end
+$var wire 1 G jal_addr [5] $end
+$var wire 1 H jal_addr [4] $end
+$var wire 1 I jal_addr [3] $end
+$var wire 1 J jal_addr [2] $end
+$var wire 1 K jal_addr [1] $end
+$var wire 1 L jal_addr [0] $end
+$var wire 1 M jalr_jcond_addr [31] $end
+$var wire 1 N jalr_jcond_addr [30] $end
+$var wire 1 O jalr_jcond_addr [29] $end
+$var wire 1 P jalr_jcond_addr [28] $end
+$var wire 1 Q jalr_jcond_addr [27] $end
+$var wire 1 R jalr_jcond_addr [26] $end
+$var wire 1 S jalr_jcond_addr [25] $end
+$var wire 1 T jalr_jcond_addr [24] $end
+$var wire 1 U jalr_jcond_addr [23] $end
+$var wire 1 V jalr_jcond_addr [22] $end
+$var wire 1 W jalr_jcond_addr [21] $end
+$var wire 1 X jalr_jcond_addr [20] $end
+$var wire 1 Y jalr_jcond_addr [19] $end
+$var wire 1 Z jalr_jcond_addr [18] $end
+$var wire 1 [ jalr_jcond_addr [17] $end
+$var wire 1 \ jalr_jcond_addr [16] $end
+$var wire 1 ] jalr_jcond_addr [15] $end
+$var wire 1 ^ jalr_jcond_addr [14] $end
+$var wire 1 _ jalr_jcond_addr [13] $end
+$var wire 1 ` jalr_jcond_addr [12] $end
+$var wire 1 a jalr_jcond_addr [11] $end
+$var wire 1 b jalr_jcond_addr [10] $end
+$var wire 1 c jalr_jcond_addr [9] $end
+$var wire 1 d jalr_jcond_addr [8] $end
+$var wire 1 e jalr_jcond_addr [7] $end
+$var wire 1 f jalr_jcond_addr [6] $end
+$var wire 1 g jalr_jcond_addr [5] $end
+$var wire 1 h jalr_jcond_addr [4] $end
+$var wire 1 i jalr_jcond_addr [3] $end
+$var wire 1 j jalr_jcond_addr [2] $end
+$var wire 1 k jalr_jcond_addr [1] $end
+$var wire 1 l jalr_jcond_addr [0] $end
+$var wire 1 m busy $end
+$var wire 1 n fetch_instr_pc [63] $end
+$var wire 1 o fetch_instr_pc [62] $end
+$var wire 1 p fetch_instr_pc [61] $end
+$var wire 1 q fetch_instr_pc [60] $end
+$var wire 1 r fetch_instr_pc [59] $end
+$var wire 1 s fetch_instr_pc [58] $end
+$var wire 1 t fetch_instr_pc [57] $end
+$var wire 1 u fetch_instr_pc [56] $end
+$var wire 1 v fetch_instr_pc [55] $end
+$var wire 1 w fetch_instr_pc [54] $end
+$var wire 1 x fetch_instr_pc [53] $end
+$var wire 1 y fetch_instr_pc [52] $end
+$var wire 1 z fetch_instr_pc [51] $end
+$var wire 1 { fetch_instr_pc [50] $end
+$var wire 1 | fetch_instr_pc [49] $end
+$var wire 1 } fetch_instr_pc [48] $end
+$var wire 1 ~ fetch_instr_pc [47] $end
+$var wire 1 !! fetch_instr_pc [46] $end
+$var wire 1 "! fetch_instr_pc [45] $end
+$var wire 1 #! fetch_instr_pc [44] $end
+$var wire 1 $! fetch_instr_pc [43] $end
+$var wire 1 %! fetch_instr_pc [42] $end
+$var wire 1 &! fetch_instr_pc [41] $end
+$var wire 1 '! fetch_instr_pc [40] $end
+$var wire 1 (! fetch_instr_pc [39] $end
+$var wire 1 )! fetch_instr_pc [38] $end
+$var wire 1 *! fetch_instr_pc [37] $end
+$var wire 1 +! fetch_instr_pc [36] $end
+$var wire 1 ,! fetch_instr_pc [35] $end
+$var wire 1 -! fetch_instr_pc [34] $end
+$var wire 1 .! fetch_instr_pc [33] $end
+$var wire 1 /! fetch_instr_pc [32] $end
+$var wire 1 0! fetch_instr_pc [31] $end
+$var wire 1 1! fetch_instr_pc [30] $end
+$var wire 1 2! fetch_instr_pc [29] $end
+$var wire 1 3! fetch_instr_pc [28] $end
+$var wire 1 4! fetch_instr_pc [27] $end
+$var wire 1 5! fetch_instr_pc [26] $end
+$var wire 1 6! fetch_instr_pc [25] $end
+$var wire 1 7! fetch_instr_pc [24] $end
+$var wire 1 8! fetch_instr_pc [23] $end
+$var wire 1 9! fetch_instr_pc [22] $end
+$var wire 1 :! fetch_instr_pc [21] $end
+$var wire 1 ;! fetch_instr_pc [20] $end
+$var wire 1 <! fetch_instr_pc [19] $end
+$var wire 1 =! fetch_instr_pc [18] $end
+$var wire 1 >! fetch_instr_pc [17] $end
+$var wire 1 ?! fetch_instr_pc [16] $end
+$var wire 1 @! fetch_instr_pc [15] $end
+$var wire 1 A! fetch_instr_pc [14] $end
+$var wire 1 B! fetch_instr_pc [13] $end
+$var wire 1 C! fetch_instr_pc [12] $end
+$var wire 1 D! fetch_instr_pc [11] $end
+$var wire 1 E! fetch_instr_pc [10] $end
+$var wire 1 F! fetch_instr_pc [9] $end
+$var wire 1 G! fetch_instr_pc [8] $end
+$var wire 1 H! fetch_instr_pc [7] $end
+$var wire 1 I! fetch_instr_pc [6] $end
+$var wire 1 J! fetch_instr_pc [5] $end
+$var wire 1 K! fetch_instr_pc [4] $end
+$var wire 1 L! fetch_instr_pc [3] $end
+$var wire 1 M! fetch_instr_pc [2] $end
+$var wire 1 N! fetch_instr_pc [1] $end
+$var wire 1 O! fetch_instr_pc [0] $end
+$var wire 1 P! araddr [31] $end
+$var wire 1 Q! araddr [30] $end
+$var wire 1 R! araddr [29] $end
+$var wire 1 S! araddr [28] $end
+$var wire 1 T! araddr [27] $end
+$var wire 1 U! araddr [26] $end
+$var wire 1 V! araddr [25] $end
+$var wire 1 W! araddr [24] $end
+$var wire 1 X! araddr [23] $end
+$var wire 1 Y! araddr [22] $end
+$var wire 1 Z! araddr [21] $end
+$var wire 1 [! araddr [20] $end
+$var wire 1 \! araddr [19] $end
+$var wire 1 ]! araddr [18] $end
+$var wire 1 ^! araddr [17] $end
+$var wire 1 _! araddr [16] $end
+$var wire 1 `! araddr [15] $end
+$var wire 1 a! araddr [14] $end
+$var wire 1 b! araddr [13] $end
+$var wire 1 c! araddr [12] $end
+$var wire 1 d! araddr [11] $end
+$var wire 1 e! araddr [10] $end
+$var wire 1 f! araddr [9] $end
+$var wire 1 g! araddr [8] $end
+$var wire 1 h! araddr [7] $end
+$var wire 1 i! araddr [6] $end
+$var wire 1 j! araddr [5] $end
+$var wire 1 k! araddr [4] $end
+$var wire 1 l! araddr [3] $end
+$var wire 1 m! araddr [2] $end
+$var wire 1 n! araddr [1] $end
+$var wire 1 o! araddr [0] $end
+$var wire 1 p! rdata [31] $end
+$var wire 1 q! rdata [30] $end
+$var wire 1 r! rdata [29] $end
+$var wire 1 s! rdata [28] $end
+$var wire 1 t! rdata [27] $end
+$var wire 1 u! rdata [26] $end
+$var wire 1 v! rdata [25] $end
+$var wire 1 w! rdata [24] $end
+$var wire 1 x! rdata [23] $end
+$var wire 1 y! rdata [22] $end
+$var wire 1 z! rdata [21] $end
+$var wire 1 {! rdata [20] $end
+$var wire 1 |! rdata [19] $end
+$var wire 1 }! rdata [18] $end
+$var wire 1 ~! rdata [17] $end
+$var wire 1 !" rdata [16] $end
+$var wire 1 "" rdata [15] $end
+$var wire 1 #" rdata [14] $end
+$var wire 1 $" rdata [13] $end
+$var wire 1 %" rdata [12] $end
+$var wire 1 &" rdata [11] $end
+$var wire 1 '" rdata [10] $end
+$var wire 1 (" rdata [9] $end
+$var wire 1 )" rdata [8] $end
+$var wire 1 *" rdata [7] $end
+$var wire 1 +" rdata [6] $end
+$var wire 1 ," rdata [5] $end
+$var wire 1 -" rdata [4] $end
+$var wire 1 ." rdata [3] $end
+$var wire 1 /" rdata [2] $end
+$var wire 1 0" rdata [1] $end
+$var wire 1 1" rdata [0] $end
+$var wire 1 2" rready $end
+$var wire 1 3" arready $end
+$var wire 1 4" rlast $end
+$var wire 1 5" arburst [1] $end
+$var wire 1 6" arburst [0] $end
+$var wire 1 7" arsize [2] $end
+$var wire 1 8" arsize [1] $end
+$var wire 1 9" arsize [0] $end
+$var wire 1 :" arlen [7] $end
+$var wire 1 ;" arlen [6] $end
+$var wire 1 <" arlen [5] $end
+$var wire 1 =" arlen [4] $end
+$var wire 1 >" arlen [3] $end
+$var wire 1 ?" arlen [2] $end
+$var wire 1 @" arlen [1] $end
+$var wire 1 A" arlen [0] $end
+$var wire 1 B" rvalid $end
+$var wire 1 C" arvalid $end
+
+$scope module Core_instance $end
+$var wire 1 ) clk $end
+$var wire 1 * rst_n $end
+$var wire 1 B" rvalid $end
+$var wire 1 4" rlast $end
+$var wire 1 p! rdata [31] $end
+$var wire 1 q! rdata [30] $end
+$var wire 1 r! rdata [29] $end
+$var wire 1 s! rdata [28] $end
+$var wire 1 t! rdata [27] $end
+$var wire 1 u! rdata [26] $end
+$var wire 1 v! rdata [25] $end
+$var wire 1 w! rdata [24] $end
+$var wire 1 x! rdata [23] $end
+$var wire 1 y! rdata [22] $end
+$var wire 1 z! rdata [21] $end
+$var wire 1 {! rdata [20] $end
+$var wire 1 |! rdata [19] $end
+$var wire 1 }! rdata [18] $end
+$var wire 1 ~! rdata [17] $end
+$var wire 1 !" rdata [16] $end
+$var wire 1 "" rdata [15] $end
+$var wire 1 #" rdata [14] $end
+$var wire 1 $" rdata [13] $end
+$var wire 1 %" rdata [12] $end
+$var wire 1 &" rdata [11] $end
+$var wire 1 '" rdata [10] $end
+$var wire 1 (" rdata [9] $end
+$var wire 1 )" rdata [8] $end
+$var wire 1 *" rdata [7] $end
+$var wire 1 +" rdata [6] $end
+$var wire 1 ," rdata [5] $end
+$var wire 1 -" rdata [4] $end
+$var wire 1 ." rdata [3] $end
+$var wire 1 /" rdata [2] $end
+$var wire 1 0" rdata [1] $end
+$var wire 1 1" rdata [0] $end
+$var wire 1 3" arready $end
+$var wire 1 + jal $end
+$var wire 1 , jalr_jcond $end
+$var wire 1 - jal_addr [31] $end
+$var wire 1 . jal_addr [30] $end
+$var wire 1 / jal_addr [29] $end
+$var wire 1 0 jal_addr [28] $end
+$var wire 1 1 jal_addr [27] $end
+$var wire 1 2 jal_addr [26] $end
+$var wire 1 3 jal_addr [25] $end
+$var wire 1 4 jal_addr [24] $end
+$var wire 1 5 jal_addr [23] $end
+$var wire 1 6 jal_addr [22] $end
+$var wire 1 7 jal_addr [21] $end
+$var wire 1 8 jal_addr [20] $end
+$var wire 1 9 jal_addr [19] $end
+$var wire 1 : jal_addr [18] $end
+$var wire 1 ; jal_addr [17] $end
+$var wire 1 < jal_addr [16] $end
+$var wire 1 = jal_addr [15] $end
+$var wire 1 > jal_addr [14] $end
+$var wire 1 ? jal_addr [13] $end
+$var wire 1 @ jal_addr [12] $end
+$var wire 1 A jal_addr [11] $end
+$var wire 1 B jal_addr [10] $end
+$var wire 1 C jal_addr [9] $end
+$var wire 1 D jal_addr [8] $end
+$var wire 1 E jal_addr [7] $end
+$var wire 1 F jal_addr [6] $end
+$var wire 1 G jal_addr [5] $end
+$var wire 1 H jal_addr [4] $end
+$var wire 1 I jal_addr [3] $end
+$var wire 1 J jal_addr [2] $end
+$var wire 1 K jal_addr [1] $end
+$var wire 1 L jal_addr [0] $end
+$var wire 1 M jalr_jcond_addr [31] $end
+$var wire 1 N jalr_jcond_addr [30] $end
+$var wire 1 O jalr_jcond_addr [29] $end
+$var wire 1 P jalr_jcond_addr [28] $end
+$var wire 1 Q jalr_jcond_addr [27] $end
+$var wire 1 R jalr_jcond_addr [26] $end
+$var wire 1 S jalr_jcond_addr [25] $end
+$var wire 1 T jalr_jcond_addr [24] $end
+$var wire 1 U jalr_jcond_addr [23] $end
+$var wire 1 V jalr_jcond_addr [22] $end
+$var wire 1 W jalr_jcond_addr [21] $end
+$var wire 1 X jalr_jcond_addr [20] $end
+$var wire 1 Y jalr_jcond_addr [19] $end
+$var wire 1 Z jalr_jcond_addr [18] $end
+$var wire 1 [ jalr_jcond_addr [17] $end
+$var wire 1 \ jalr_jcond_addr [16] $end
+$var wire 1 ] jalr_jcond_addr [15] $end
+$var wire 1 ^ jalr_jcond_addr [14] $end
+$var wire 1 _ jalr_jcond_addr [13] $end
+$var wire 1 ` jalr_jcond_addr [12] $end
+$var wire 1 a jalr_jcond_addr [11] $end
+$var wire 1 b jalr_jcond_addr [10] $end
+$var wire 1 c jalr_jcond_addr [9] $end
+$var wire 1 d jalr_jcond_addr [8] $end
+$var wire 1 e jalr_jcond_addr [7] $end
+$var wire 1 f jalr_jcond_addr [6] $end
+$var wire 1 g jalr_jcond_addr [5] $end
+$var wire 1 h jalr_jcond_addr [4] $end
+$var wire 1 i jalr_jcond_addr [3] $end
+$var wire 1 j jalr_jcond_addr [2] $end
+$var wire 1 k jalr_jcond_addr [1] $end
+$var wire 1 l jalr_jcond_addr [0] $end
+$var wire 1 m busy $end
+$var wire 1 2" rready $end
+$var wire 1 P! araddr [31] $end
+$var wire 1 Q! araddr [30] $end
+$var wire 1 R! araddr [29] $end
+$var wire 1 S! araddr [28] $end
+$var wire 1 T! araddr [27] $end
+$var wire 1 U! araddr [26] $end
+$var wire 1 V! araddr [25] $end
+$var wire 1 W! araddr [24] $end
+$var wire 1 X! araddr [23] $end
+$var wire 1 Y! araddr [22] $end
+$var wire 1 Z! araddr [21] $end
+$var wire 1 [! araddr [20] $end
+$var wire 1 \! araddr [19] $end
+$var wire 1 ]! araddr [18] $end
+$var wire 1 ^! araddr [17] $end
+$var wire 1 _! araddr [16] $end
+$var wire 1 `! araddr [15] $end
+$var wire 1 a! araddr [14] $end
+$var wire 1 b! araddr [13] $end
+$var wire 1 c! araddr [12] $end
+$var wire 1 d! araddr [11] $end
+$var wire 1 e! araddr [10] $end
+$var wire 1 f! araddr [9] $end
+$var wire 1 g! araddr [8] $end
+$var wire 1 h! araddr [7] $end
+$var wire 1 i! araddr [6] $end
+$var wire 1 j! araddr [5] $end
+$var wire 1 k! araddr [4] $end
+$var wire 1 l! araddr [3] $end
+$var wire 1 m! araddr [2] $end
+$var wire 1 n! araddr [1] $end
+$var wire 1 o! araddr [0] $end
+$var wire 1 5" arburst [1] $end
+$var wire 1 6" arburst [0] $end
+$var wire 1 7" arsize [2] $end
+$var wire 1 8" arsize [1] $end
+$var wire 1 9" arsize [0] $end
+$var wire 1 :" arlen [7] $end
+$var wire 1 ;" arlen [6] $end
+$var wire 1 <" arlen [5] $end
+$var wire 1 =" arlen [4] $end
+$var wire 1 >" arlen [3] $end
+$var wire 1 ?" arlen [2] $end
+$var wire 1 @" arlen [1] $end
+$var wire 1 A" arlen [0] $end
+$var wire 1 n fetch_instr_pc [63] $end
+$var wire 1 o fetch_instr_pc [62] $end
+$var wire 1 p fetch_instr_pc [61] $end
+$var wire 1 q fetch_instr_pc [60] $end
+$var wire 1 r fetch_instr_pc [59] $end
+$var wire 1 s fetch_instr_pc [58] $end
+$var wire 1 t fetch_instr_pc [57] $end
+$var wire 1 u fetch_instr_pc [56] $end
+$var wire 1 v fetch_instr_pc [55] $end
+$var wire 1 w fetch_instr_pc [54] $end
+$var wire 1 x fetch_instr_pc [53] $end
+$var wire 1 y fetch_instr_pc [52] $end
+$var wire 1 z fetch_instr_pc [51] $end
+$var wire 1 { fetch_instr_pc [50] $end
+$var wire 1 | fetch_instr_pc [49] $end
+$var wire 1 } fetch_instr_pc [48] $end
+$var wire 1 ~ fetch_instr_pc [47] $end
+$var wire 1 !! fetch_instr_pc [46] $end
+$var wire 1 "! fetch_instr_pc [45] $end
+$var wire 1 #! fetch_instr_pc [44] $end
+$var wire 1 $! fetch_instr_pc [43] $end
+$var wire 1 %! fetch_instr_pc [42] $end
+$var wire 1 &! fetch_instr_pc [41] $end
+$var wire 1 '! fetch_instr_pc [40] $end
+$var wire 1 (! fetch_instr_pc [39] $end
+$var wire 1 )! fetch_instr_pc [38] $end
+$var wire 1 *! fetch_instr_pc [37] $end
+$var wire 1 +! fetch_instr_pc [36] $end
+$var wire 1 ,! fetch_instr_pc [35] $end
+$var wire 1 -! fetch_instr_pc [34] $end
+$var wire 1 .! fetch_instr_pc [33] $end
+$var wire 1 /! fetch_instr_pc [32] $end
+$var wire 1 0! fetch_instr_pc [31] $end
+$var wire 1 1! fetch_instr_pc [30] $end
+$var wire 1 2! fetch_instr_pc [29] $end
+$var wire 1 3! fetch_instr_pc [28] $end
+$var wire 1 4! fetch_instr_pc [27] $end
+$var wire 1 5! fetch_instr_pc [26] $end
+$var wire 1 6! fetch_instr_pc [25] $end
+$var wire 1 7! fetch_instr_pc [24] $end
+$var wire 1 8! fetch_instr_pc [23] $end
+$var wire 1 9! fetch_instr_pc [22] $end
+$var wire 1 :! fetch_instr_pc [21] $end
+$var wire 1 ;! fetch_instr_pc [20] $end
+$var wire 1 <! fetch_instr_pc [19] $end
+$var wire 1 =! fetch_instr_pc [18] $end
+$var wire 1 >! fetch_instr_pc [17] $end
+$var wire 1 ?! fetch_instr_pc [16] $end
+$var wire 1 @! fetch_instr_pc [15] $end
+$var wire 1 A! fetch_instr_pc [14] $end
+$var wire 1 B! fetch_instr_pc [13] $end
+$var wire 1 C! fetch_instr_pc [12] $end
+$var wire 1 D! fetch_instr_pc [11] $end
+$var wire 1 E! fetch_instr_pc [10] $end
+$var wire 1 F! fetch_instr_pc [9] $end
+$var wire 1 G! fetch_instr_pc [8] $end
+$var wire 1 H! fetch_instr_pc [7] $end
+$var wire 1 I! fetch_instr_pc [6] $end
+$var wire 1 J! fetch_instr_pc [5] $end
+$var wire 1 K! fetch_instr_pc [4] $end
+$var wire 1 L! fetch_instr_pc [3] $end
+$var wire 1 M! fetch_instr_pc [2] $end
+$var wire 1 N! fetch_instr_pc [1] $end
+$var wire 1 O! fetch_instr_pc [0] $end
+
+$scope module Cache_Controller_instance $end
+$var wire 1 ) clk $end
+$var wire 1 * rst_n $end
+$var wire 1 B" rvalid $end
+$var wire 1 4" rlast $end
+$var wire 1 p! rdata [31] $end
+$var wire 1 q! rdata [30] $end
+$var wire 1 r! rdata [29] $end
+$var wire 1 s! rdata [28] $end
+$var wire 1 t! rdata [27] $end
+$var wire 1 u! rdata [26] $end
+$var wire 1 v! rdata [25] $end
+$var wire 1 w! rdata [24] $end
+$var wire 1 x! rdata [23] $end
+$var wire 1 y! rdata [22] $end
+$var wire 1 z! rdata [21] $end
+$var wire 1 {! rdata [20] $end
+$var wire 1 |! rdata [19] $end
+$var wire 1 }! rdata [18] $end
+$var wire 1 ~! rdata [17] $end
+$var wire 1 !" rdata [16] $end
+$var wire 1 "" rdata [15] $end
+$var wire 1 #" rdata [14] $end
+$var wire 1 $" rdata [13] $end
+$var wire 1 %" rdata [12] $end
+$var wire 1 &" rdata [11] $end
+$var wire 1 '" rdata [10] $end
+$var wire 1 (" rdata [9] $end
+$var wire 1 )" rdata [8] $end
+$var wire 1 *" rdata [7] $end
+$var wire 1 +" rdata [6] $end
+$var wire 1 ," rdata [5] $end
+$var wire 1 -" rdata [4] $end
+$var wire 1 ." rdata [3] $end
+$var wire 1 /" rdata [2] $end
+$var wire 1 0" rdata [1] $end
+$var wire 1 1" rdata [0] $end
+$var wire 1 3" arready $end
+$var wire 1 + jal $end
+$var wire 1 , jalr_jcond $end
+$var wire 1 - jal_addr [31] $end
+$var wire 1 . jal_addr [30] $end
+$var wire 1 / jal_addr [29] $end
+$var wire 1 0 jal_addr [28] $end
+$var wire 1 1 jal_addr [27] $end
+$var wire 1 2 jal_addr [26] $end
+$var wire 1 3 jal_addr [25] $end
+$var wire 1 4 jal_addr [24] $end
+$var wire 1 5 jal_addr [23] $end
+$var wire 1 6 jal_addr [22] $end
+$var wire 1 7 jal_addr [21] $end
+$var wire 1 8 jal_addr [20] $end
+$var wire 1 9 jal_addr [19] $end
+$var wire 1 : jal_addr [18] $end
+$var wire 1 ; jal_addr [17] $end
+$var wire 1 < jal_addr [16] $end
+$var wire 1 = jal_addr [15] $end
+$var wire 1 > jal_addr [14] $end
+$var wire 1 ? jal_addr [13] $end
+$var wire 1 @ jal_addr [12] $end
+$var wire 1 A jal_addr [11] $end
+$var wire 1 B jal_addr [10] $end
+$var wire 1 C jal_addr [9] $end
+$var wire 1 D jal_addr [8] $end
+$var wire 1 E jal_addr [7] $end
+$var wire 1 F jal_addr [6] $end
+$var wire 1 G jal_addr [5] $end
+$var wire 1 H jal_addr [4] $end
+$var wire 1 I jal_addr [3] $end
+$var wire 1 J jal_addr [2] $end
+$var wire 1 K jal_addr [1] $end
+$var wire 1 L jal_addr [0] $end
+$var wire 1 M jalr_jcond_addr [31] $end
+$var wire 1 N jalr_jcond_addr [30] $end
+$var wire 1 O jalr_jcond_addr [29] $end
+$var wire 1 P jalr_jcond_addr [28] $end
+$var wire 1 Q jalr_jcond_addr [27] $end
+$var wire 1 R jalr_jcond_addr [26] $end
+$var wire 1 S jalr_jcond_addr [25] $end
+$var wire 1 T jalr_jcond_addr [24] $end
+$var wire 1 U jalr_jcond_addr [23] $end
+$var wire 1 V jalr_jcond_addr [22] $end
+$var wire 1 W jalr_jcond_addr [21] $end
+$var wire 1 X jalr_jcond_addr [20] $end
+$var wire 1 Y jalr_jcond_addr [19] $end
+$var wire 1 Z jalr_jcond_addr [18] $end
+$var wire 1 [ jalr_jcond_addr [17] $end
+$var wire 1 \ jalr_jcond_addr [16] $end
+$var wire 1 ] jalr_jcond_addr [15] $end
+$var wire 1 ^ jalr_jcond_addr [14] $end
+$var wire 1 _ jalr_jcond_addr [13] $end
+$var wire 1 ` jalr_jcond_addr [12] $end
+$var wire 1 a jalr_jcond_addr [11] $end
+$var wire 1 b jalr_jcond_addr [10] $end
+$var wire 1 c jalr_jcond_addr [9] $end
+$var wire 1 d jalr_jcond_addr [8] $end
+$var wire 1 e jalr_jcond_addr [7] $end
+$var wire 1 f jalr_jcond_addr [6] $end
+$var wire 1 g jalr_jcond_addr [5] $end
+$var wire 1 h jalr_jcond_addr [4] $end
+$var wire 1 i jalr_jcond_addr [3] $end
+$var wire 1 j jalr_jcond_addr [2] $end
+$var wire 1 k jalr_jcond_addr [1] $end
+$var wire 1 l jalr_jcond_addr [0] $end
+$var wire 1 m busy $end
+$var wire 1 2" rready $end
+$var wire 1 P! araddr [31] $end
+$var wire 1 Q! araddr [30] $end
+$var wire 1 R! araddr [29] $end
+$var wire 1 S! araddr [28] $end
+$var wire 1 T! araddr [27] $end
+$var wire 1 U! araddr [26] $end
+$var wire 1 V! araddr [25] $end
+$var wire 1 W! araddr [24] $end
+$var wire 1 X! araddr [23] $end
+$var wire 1 Y! araddr [22] $end
+$var wire 1 Z! araddr [21] $end
+$var wire 1 [! araddr [20] $end
+$var wire 1 \! araddr [19] $end
+$var wire 1 ]! araddr [18] $end
+$var wire 1 ^! araddr [17] $end
+$var wire 1 _! araddr [16] $end
+$var wire 1 `! araddr [15] $end
+$var wire 1 a! araddr [14] $end
+$var wire 1 b! araddr [13] $end
+$var wire 1 c! araddr [12] $end
+$var wire 1 d! araddr [11] $end
+$var wire 1 e! araddr [10] $end
+$var wire 1 f! araddr [9] $end
+$var wire 1 g! araddr [8] $end
+$var wire 1 h! araddr [7] $end
+$var wire 1 i! araddr [6] $end
+$var wire 1 j! araddr [5] $end
+$var wire 1 k! araddr [4] $end
+$var wire 1 l! araddr [3] $end
+$var wire 1 m! araddr [2] $end
+$var wire 1 n! araddr [1] $end
+$var wire 1 o! araddr [0] $end
+$var reg 2 D" arburst [1:0] $end
+$var reg 3 E" arsize [2:0] $end
+$var reg 8 F" arlen [7:0] $end
+$var reg 64 G" fetch_instr_pc [63:0] $end
+
+$scope module PC_Control_instance $end
+$var wire 1 ) clk $end
+$var wire 1 * rst_n $end
+$var wire 1 + jal $end
+$var wire 1 , jalr_jcond $end
+$var wire 1 - jal_addr [31] $end
+$var wire 1 . jal_addr [30] $end
+$var wire 1 / jal_addr [29] $end
+$var wire 1 0 jal_addr [28] $end
+$var wire 1 1 jal_addr [27] $end
+$var wire 1 2 jal_addr [26] $end
+$var wire 1 3 jal_addr [25] $end
+$var wire 1 4 jal_addr [24] $end
+$var wire 1 5 jal_addr [23] $end
+$var wire 1 6 jal_addr [22] $end
+$var wire 1 7 jal_addr [21] $end
+$var wire 1 8 jal_addr [20] $end
+$var wire 1 9 jal_addr [19] $end
+$var wire 1 : jal_addr [18] $end
+$var wire 1 ; jal_addr [17] $end
+$var wire 1 < jal_addr [16] $end
+$var wire 1 = jal_addr [15] $end
+$var wire 1 > jal_addr [14] $end
+$var wire 1 ? jal_addr [13] $end
+$var wire 1 @ jal_addr [12] $end
+$var wire 1 A jal_addr [11] $end
+$var wire 1 B jal_addr [10] $end
+$var wire 1 C jal_addr [9] $end
+$var wire 1 D jal_addr [8] $end
+$var wire 1 E jal_addr [7] $end
+$var wire 1 F jal_addr [6] $end
+$var wire 1 G jal_addr [5] $end
+$var wire 1 H jal_addr [4] $end
+$var wire 1 I jal_addr [3] $end
+$var wire 1 J jal_addr [2] $end
+$var wire 1 K jal_addr [1] $end
+$var wire 1 L jal_addr [0] $end
+$var wire 1 M jalr_jcond_addr [31] $end
+$var wire 1 N jalr_jcond_addr [30] $end
+$var wire 1 O jalr_jcond_addr [29] $end
+$var wire 1 P jalr_jcond_addr [28] $end
+$var wire 1 Q jalr_jcond_addr [27] $end
+$var wire 1 R jalr_jcond_addr [26] $end
+$var wire 1 S jalr_jcond_addr [25] $end
+$var wire 1 T jalr_jcond_addr [24] $end
+$var wire 1 U jalr_jcond_addr [23] $end
+$var wire 1 V jalr_jcond_addr [22] $end
+$var wire 1 W jalr_jcond_addr [21] $end
+$var wire 1 X jalr_jcond_addr [20] $end
+$var wire 1 Y jalr_jcond_addr [19] $end
+$var wire 1 Z jalr_jcond_addr [18] $end
+$var wire 1 [ jalr_jcond_addr [17] $end
+$var wire 1 \ jalr_jcond_addr [16] $end
+$var wire 1 ] jalr_jcond_addr [15] $end
+$var wire 1 ^ jalr_jcond_addr [14] $end
+$var wire 1 _ jalr_jcond_addr [13] $end
+$var wire 1 ` jalr_jcond_addr [12] $end
+$var wire 1 a jalr_jcond_addr [11] $end
+$var wire 1 b jalr_jcond_addr [10] $end
+$var wire 1 c jalr_jcond_addr [9] $end
+$var wire 1 d jalr_jcond_addr [8] $end
+$var wire 1 e jalr_jcond_addr [7] $end
+$var wire 1 f jalr_jcond_addr [6] $end
+$var wire 1 g jalr_jcond_addr [5] $end
+$var wire 1 h jalr_jcond_addr [4] $end
+$var wire 1 i jalr_jcond_addr [3] $end
+$var wire 1 j jalr_jcond_addr [2] $end
+$var wire 1 k jalr_jcond_addr [1] $end
+$var wire 1 l jalr_jcond_addr [0] $end
+$var wire 1 4" rlast $end
+$var reg 32 H" pc_addr [31:0] $end
+$var wire 1 I" next_pc [31] $end
+$var wire 1 J" next_pc [30] $end
+$var wire 1 K" next_pc [29] $end
+$var wire 1 L" next_pc [28] $end
+$var wire 1 M" next_pc [27] $end
+$var wire 1 N" next_pc [26] $end
+$var wire 1 O" next_pc [25] $end
+$var wire 1 P" next_pc [24] $end
+$var wire 1 Q" next_pc [23] $end
+$var wire 1 R" next_pc [22] $end
+$var wire 1 S" next_pc [21] $end
+$var wire 1 T" next_pc [20] $end
+$var wire 1 U" next_pc [19] $end
+$var wire 1 V" next_pc [18] $end
+$var wire 1 W" next_pc [17] $end
+$var wire 1 X" next_pc [16] $end
+$var wire 1 Y" next_pc [15] $end
+$var wire 1 Z" next_pc [14] $end
+$var wire 1 [" next_pc [13] $end
+$var wire 1 \" next_pc [12] $end
+$var wire 1 ]" next_pc [11] $end
+$var wire 1 ^" next_pc [10] $end
+$var wire 1 _" next_pc [9] $end
+$var wire 1 `" next_pc [8] $end
+$var wire 1 a" next_pc [7] $end
+$var wire 1 b" next_pc [6] $end
+$var wire 1 c" next_pc [5] $end
+$var wire 1 d" next_pc [4] $end
+$var wire 1 e" next_pc [3] $end
+$var wire 1 f" next_pc [2] $end
+$var wire 1 g" next_pc [1] $end
+$var wire 1 h" next_pc [0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+
+$scope module ICache_instance $end
+$var wire 1 ) clk $end
+$var wire 1 * rst_n $end
+$var wire 1 C" arvalid $end
+$var wire 1 P! araddr [31] $end
+$var wire 1 Q! araddr [30] $end
+$var wire 1 R! araddr [29] $end
+$var wire 1 S! araddr [28] $end
+$var wire 1 T! araddr [27] $end
+$var wire 1 U! araddr [26] $end
+$var wire 1 V! araddr [25] $end
+$var wire 1 W! araddr [24] $end
+$var wire 1 X! araddr [23] $end
+$var wire 1 Y! araddr [22] $end
+$var wire 1 Z! araddr [21] $end
+$var wire 1 [! araddr [20] $end
+$var wire 1 \! araddr [19] $end
+$var wire 1 ]! araddr [18] $end
+$var wire 1 ^! araddr [17] $end
+$var wire 1 _! araddr [16] $end
+$var wire 1 `! araddr [15] $end
+$var wire 1 a! araddr [14] $end
+$var wire 1 b! araddr [13] $end
+$var wire 1 c! araddr [12] $end
+$var wire 1 d! araddr [11] $end
+$var wire 1 e! araddr [10] $end
+$var wire 1 f! araddr [9] $end
+$var wire 1 g! araddr [8] $end
+$var wire 1 h! araddr [7] $end
+$var wire 1 i! araddr [6] $end
+$var wire 1 j! araddr [5] $end
+$var wire 1 k! araddr [4] $end
+$var wire 1 l! araddr [3] $end
+$var wire 1 m! araddr [2] $end
+$var wire 1 n! araddr [1] $end
+$var wire 1 o! araddr [0] $end
+$var wire 1 5" arburst [1] $end
+$var wire 1 6" arburst [0] $end
+$var wire 1 7" arsize [2] $end
+$var wire 1 8" arsize [1] $end
+$var wire 1 9" arsize [0] $end
+$var wire 1 :" arlen [7] $end
+$var wire 1 ;" arlen [6] $end
+$var wire 1 <" arlen [5] $end
+$var wire 1 =" arlen [4] $end
+$var wire 1 >" arlen [3] $end
+$var wire 1 ?" arlen [2] $end
+$var wire 1 @" arlen [1] $end
+$var wire 1 A" arlen [0] $end
+$var reg 1 i" arready $end
+$var wire 1 2" rready $end
+$var reg 1 j" rvalid $end
+$var reg 32 k" rdata [31:0] $end
+$var reg 1 l" rlast $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+x#
+x$
+bx %
+bx &
+x'
+b0 (
+b0 D"
+b10 E"
+b0 F"
+b0 G"
+b0 H"
+1i"
+0j"
+bx k"
+0l"
+0o!
+0n!
+0m!
+0l!
+0k!
+0j!
+0i!
+0h!
+0g!
+0f!
+0e!
+0d!
+0c!
+0b!
+0a!
+0`!
+0_!
+0^!
+0]!
+0\!
+0[!
+0Z!
+0Y!
+0X!
+0W!
+0V!
+0U!
+0T!
+0S!
+0R!
+0Q!
+0P!
+x1"
+x0"
+x/"
+x."
+x-"
+x,"
+x+"
+x*"
+x)"
+x("
+x'"
+x&"
+x%"
+x$"
+x#"
+x""
+x!"
+x~!
+x}!
+x|!
+x{!
+xz!
+xy!
+xx!
+xw!
+xv!
+xu!
+xt!
+xs!
+xr!
+xq!
+xp!
+x2"
+13"
+04"
+06"
+05"
+09"
+18"
+07"
+0A"
+0@"
+0?"
+0>"
+0="
+0<"
+0;"
+0:"
+0B"
+xh"
+xg"
+xf"
+xe"
+xd"
+xc"
+xb"
+xa"
+x`"
+x_"
+x^"
+x]"
+x\"
+x["
+xZ"
+xY"
+xX"
+xW"
+xV"
+xU"
+xT"
+xS"
+xR"
+xQ"
+xP"
+xO"
+xN"
+xM"
+xL"
+xK"
+xJ"
+xI"
+zC"
+xm
+xl
+xk
+xj
+xi
+xh
+xg
+xf
+xe
+xd
+xc
+xb
+xa
+x`
+x_
+x^
+x]
+x\
+x[
+xZ
+xY
+xX
+xW
+xV
+xU
+xT
+xS
+xR
+xQ
+xP
+xO
+xN
+xM
+xL
+xK
+xJ
+xI
+xH
+xG
+xF
+xE
+xD
+xC
+xB
+xA
+x@
+x?
+x>
+x=
+x<
+x;
+x:
+x9
+x8
+x7
+x6
+x5
+x4
+x3
+x2
+x1
+x0
+x/
+x.
+x-
+x,
+x+
+0*
+0)
+0O!
+0N!
+0M!
+0L!
+0K!
+0J!
+0I!
+0H!
+0G!
+0F!
+0E!
+0D!
+0C!
+0B!
+0A!
+0@!
+0?!
+0>!
+0=!
+0<!
+0;!
+0:!
+09!
+08!
+07!
+06!
+05!
+04!
+03!
+02!
+01!
+00!
+0/!
+0.!
+0-!
+0,!
+0+!
+0*!
+0)!
+0(!
+0'!
+0&!
+0%!
+0$!
+0#!
+0"!
+0!!
+0~
+0}
+0|
+0{
+0z
+0y
+0x
+0w
+0v
+0u
+0t
+0s
+0r
+0q
+0p
+0o
+0n
+$end
+#10000
+1!
+1)
+#20000
+1"
+0#
+0$
+b1010 %
+b10100 &
+0!
+0+
+0,
+0l
+0k
+1j
+0i
+1h
+0g
+0f
+0e
+0d
+0c
+0b
+0a
+0`
+0_
+0^
+0]
+0\
+0[
+0Z
+0Y
+0X
+0W
+0V
+0U
+0T
+0S
+0R
+0Q
+0P
+0O
+0N
+0M
+0L
+1K
+0J
+1I
+0H
+0G
+0F
+0E
+0D
+0C
+0B
+0A
+0@
+0?
+0>
+0=
+0<
+0;
+0:
+09
+08
+07
+06
+05
+04
+03
+02
+01
+00
+0/
+0.
+0-
+0h"
+0g"
+1f"
+0e"
+0d"
+0c"
+0b"
+0a"
+0`"
+0_"
+0^"
+0]"
+0\"
+0["
+0Z"
+0Y"
+0X"
+0W"
+0V"
+0U"
+0T"
+0S"
+0R"
+0Q"
+0P"
+0O"
+0N"
+0M"
+0L"
+0K"
+0J"
+0I"
+1*
+0)
+#30000
+1!
+1)
+#40000
+0!
+0)
+#50000
+1!
+1)
+#60000
+1#
+0!
+1+
+1g"
+0f"
+1e"
+0)
+#70000
+1!
+1)
+#80000
+0!
+0)
+#90000
+1!
+1)
+#100000
+0#
+1$
+0!
+0+
+1,
+0g"
+1f"
+0e"
+1d"
+0)
+#110000
+1!
+1)
+#120000
+0!
+0)
+#130000
+1!
+1)
+#140000
+0$
+0!
+0,
+0d"
+0)
+#150000
+1!
+1)
+#160000
+0!
+0)
+#170000
+1!
+1)
+#180000
+0!
+0)
+#190000
+1!
+1)
+#200000
+0!
+0)
+#210000
+1!
+1)
+#220000
+0!
+0)
+#230000
+1!
+1)

@@ -3,21 +3,20 @@ module PC_Control(
 	// Input signals
 	input wire 			clk,
 	input wire 			rst_n,
-	input wire   		jal,
-	input wire 			jalr_jcond,
-	input wire [31:0]	jal_addr,
-	input wire [31:0] 	jalr_jcond_addr,
-	input wire 			rlast,
+	input wire			stall,
+	input wire			jump,
+	input wire			jump_accept,
+	input wire [31:0]	jump_addr,
 	// Output signal	
 	output reg	[31:0]	pc_addr
 );
-	wire [31:0] next_pc = jal ? jal_addr : jalr_jcond ? jalr_jcond_addr : pc_addr + 32'd4;
+	wire [31:0] next_pc = jump ? jump_addr : pc_addr + 32'd8;
 
 	always @(posedge clk or negedge rst_n) begin
 		if(!rst_n) begin
 			pc_addr <= 32'd0;
 		end
-		else if (!rlast) begin
+		else if(stall) begin
 			pc_addr <= pc_addr;
 		end
 		else pc_addr <= next_pc;

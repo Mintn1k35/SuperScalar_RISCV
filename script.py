@@ -40,7 +40,7 @@ elif action == "-t":
         with open(template_tb, "r") as f:
             input_content = "\n\t".join(input_signals)
             output_content = "\n\t".join(output_signals)
-            instance_content = "".join(instance_signal)
+            instance_content = " ".join(instance_signal)
             content = f.read().replace("name", name).replace("Input", input_content).replace("Output", output_content).replace("Instance", f"{name} {name}_instance({instance_content})")
             with open(f"{dir_tb}/{name}.sv", "w") as f:
                 f.write(content)

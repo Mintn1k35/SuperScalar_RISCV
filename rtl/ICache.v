@@ -14,13 +14,13 @@ module ICache(
 	// Read data channel
 	input wire 			rready,
 	output reg 			rvalid,
-	output reg	[31:0]	rdata,
+	output reg	[63:0]	rdata,
 	output reg 			rlast
 );
 	reg [31:0] rom[100:0];
 
 	initial begin
-		$readmemh("ttest_file/est_program.mem", rom);
+		$readmemh("test_file/test_program.mem", rom);
 	end
 
 	always @(posedge clk or negedge rst_n) begin
@@ -44,7 +44,7 @@ module ICache(
 		if (arvalid & arready & ~(rvalid & !rready)) begin
 			rvalid <= 1'b1;
 			rlast <= 1'b1;
-			rdata <= rom[araddr[31:0]];
+			rdata <= { rom[araddr[31:0]+1] , rom[araddr[31:0]] };
 		end
 	end
 

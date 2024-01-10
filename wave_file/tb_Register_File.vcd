@@ -1,0 +1,491 @@
+$date
+	Fri Jan  5 14:51:29 2024
+$end
+$version
+	Questa Intel Starter FPGA Edition Version 2021.2
+$end
+$timescale
+	1ps
+$end
+
+$scope module tb_Register_File $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 1 # instr1_rd_change $end
+$var reg 1 $ instr2_rd_change $end
+$var reg 5 % instr1_rs1 [4:0] $end
+$var reg 5 & instr1_rs2 [4:0] $end
+$var reg 5 ' instr2_rs1 [4:0] $end
+$var reg 5 ( instr2_rs2 [4:0] $end
+$var reg 5 ) instr1_rd [4:0] $end
+$var reg 5 * instr2_rd [4:0] $end
+$var reg 1 + write $end
+$var reg 32 , write_addr [31:0] $end
+$var reg 32 - write_data [31:0] $end
+$var reg 31 . reg_status [30:0] $end
+$var reg 32 / instr1_rs1_data [31:0] $end
+$var reg 32 0 instr1_rs2_data [31:0] $end
+$var reg 32 1 instr2_rs1_data [31:0] $end
+$var reg 32 2 instr2_rs2_data [31:0] $end
+
+$scope module Register_File_instance $end
+$var wire 1 3 clk $end
+$var wire 1 4 rst_n $end
+$var wire 1 5 instr1_rd_change $end
+$var wire 1 6 instr2_rd_change $end
+$var wire 1 7 instr1_rs1 [4] $end
+$var wire 1 8 instr1_rs1 [3] $end
+$var wire 1 9 instr1_rs1 [2] $end
+$var wire 1 : instr1_rs1 [1] $end
+$var wire 1 ; instr1_rs1 [0] $end
+$var wire 1 < instr1_rs2 [4] $end
+$var wire 1 = instr1_rs2 [3] $end
+$var wire 1 > instr1_rs2 [2] $end
+$var wire 1 ? instr1_rs2 [1] $end
+$var wire 1 @ instr1_rs2 [0] $end
+$var wire 1 A instr2_rs1 [4] $end
+$var wire 1 B instr2_rs1 [3] $end
+$var wire 1 C instr2_rs1 [2] $end
+$var wire 1 D instr2_rs1 [1] $end
+$var wire 1 E instr2_rs1 [0] $end
+$var wire 1 F instr2_rs2 [4] $end
+$var wire 1 G instr2_rs2 [3] $end
+$var wire 1 H instr2_rs2 [2] $end
+$var wire 1 I instr2_rs2 [1] $end
+$var wire 1 J instr2_rs2 [0] $end
+$var wire 1 K instr1_rd [4] $end
+$var wire 1 L instr1_rd [3] $end
+$var wire 1 M instr1_rd [2] $end
+$var wire 1 N instr1_rd [1] $end
+$var wire 1 O instr1_rd [0] $end
+$var wire 1 P instr2_rd [4] $end
+$var wire 1 Q instr2_rd [3] $end
+$var wire 1 R instr2_rd [2] $end
+$var wire 1 S instr2_rd [1] $end
+$var wire 1 T instr2_rd [0] $end
+$var wire 1 U write $end
+$var wire 1 V write_addr [31] $end
+$var wire 1 W write_addr [30] $end
+$var wire 1 X write_addr [29] $end
+$var wire 1 Y write_addr [28] $end
+$var wire 1 Z write_addr [27] $end
+$var wire 1 [ write_addr [26] $end
+$var wire 1 \ write_addr [25] $end
+$var wire 1 ] write_addr [24] $end
+$var wire 1 ^ write_addr [23] $end
+$var wire 1 _ write_addr [22] $end
+$var wire 1 ` write_addr [21] $end
+$var wire 1 a write_addr [20] $end
+$var wire 1 b write_addr [19] $end
+$var wire 1 c write_addr [18] $end
+$var wire 1 d write_addr [17] $end
+$var wire 1 e write_addr [16] $end
+$var wire 1 f write_addr [15] $end
+$var wire 1 g write_addr [14] $end
+$var wire 1 h write_addr [13] $end
+$var wire 1 i write_addr [12] $end
+$var wire 1 j write_addr [11] $end
+$var wire 1 k write_addr [10] $end
+$var wire 1 l write_addr [9] $end
+$var wire 1 m write_addr [8] $end
+$var wire 1 n write_addr [7] $end
+$var wire 1 o write_addr [6] $end
+$var wire 1 p write_addr [5] $end
+$var wire 1 q write_addr [4] $end
+$var wire 1 r write_addr [3] $end
+$var wire 1 s write_addr [2] $end
+$var wire 1 t write_addr [1] $end
+$var wire 1 u write_addr [0] $end
+$var wire 1 v write_data [31] $end
+$var wire 1 w write_data [30] $end
+$var wire 1 x write_data [29] $end
+$var wire 1 y write_data [28] $end
+$var wire 1 z write_data [27] $end
+$var wire 1 { write_data [26] $end
+$var wire 1 | write_data [25] $end
+$var wire 1 } write_data [24] $end
+$var wire 1 ~ write_data [23] $end
+$var wire 1 !! write_data [22] $end
+$var wire 1 "! write_data [21] $end
+$var wire 1 #! write_data [20] $end
+$var wire 1 $! write_data [19] $end
+$var wire 1 %! write_data [18] $end
+$var wire 1 &! write_data [17] $end
+$var wire 1 '! write_data [16] $end
+$var wire 1 (! write_data [15] $end
+$var wire 1 )! write_data [14] $end
+$var wire 1 *! write_data [13] $end
+$var wire 1 +! write_data [12] $end
+$var wire 1 ,! write_data [11] $end
+$var wire 1 -! write_data [10] $end
+$var wire 1 .! write_data [9] $end
+$var wire 1 /! write_data [8] $end
+$var wire 1 0! write_data [7] $end
+$var wire 1 1! write_data [6] $end
+$var wire 1 2! write_data [5] $end
+$var wire 1 3! write_data [4] $end
+$var wire 1 4! write_data [3] $end
+$var wire 1 5! write_data [2] $end
+$var wire 1 6! write_data [1] $end
+$var wire 1 7! write_data [0] $end
+$var reg 31 8! reg_status [30:0] $end
+$var reg 32 9! instr1_rs1_data [31:0] $end
+$var reg 32 :! instr1_rs2_data [31:0] $end
+$var reg 32 ;! instr2_rs1_data [31:0] $end
+$var reg 32 <! instr2_rs2_data [31:0] $end
+$var wire 1 =! clk_n $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+x#
+x$
+bx %
+bx &
+bx '
+bx (
+bx )
+bx *
+x+
+bx ,
+bx -
+b1111111111111111111111111111111 .
+bx /
+bx 0
+bx 1
+bx 2
+b1111111111111111111111111111111 8!
+bx 9!
+bx :!
+bx ;!
+bx <!
+1=!
+x7!
+x6!
+x5!
+x4!
+x3!
+x2!
+x1!
+x0!
+x/!
+x.!
+x-!
+x,!
+x+!
+x*!
+x)!
+x(!
+x'!
+x&!
+x%!
+x$!
+x#!
+x"!
+x!!
+x~
+x}
+x|
+x{
+xz
+xy
+xx
+xw
+xv
+xu
+xt
+xs
+xr
+xq
+xp
+xo
+xn
+xm
+xl
+xk
+xj
+xi
+xh
+xg
+xf
+xe
+xd
+xc
+xb
+xa
+x`
+x_
+x^
+x]
+x\
+x[
+xZ
+xY
+xX
+xW
+xV
+xU
+xT
+xS
+xR
+xQ
+xP
+xO
+xN
+xM
+xL
+xK
+xJ
+xI
+xH
+xG
+xF
+xE
+xD
+xC
+xB
+xA
+x@
+x?
+x>
+x=
+x<
+x;
+x:
+x9
+x8
+x7
+x6
+x5
+04
+03
+$end
+#10000
+1!
+13
+0=!
+#20000
+0!
+03
+1=!
+#30000
+1!
+13
+0=!
+#40000
+1"
+1#
+1$
+b1 %
+b10 &
+b11 '
+b100 (
+b101 )
+b110 *
+1+
+b1 ,
+b1010 -
+0!
+15
+16
+1U
+07!
+16!
+05!
+14!
+03!
+02!
+01!
+00!
+0/!
+0.!
+0-!
+0,!
+0+!
+0*!
+0)!
+0(!
+0'!
+0&!
+0%!
+0$!
+0#!
+0"!
+0!!
+0~
+0}
+0|
+0{
+0z
+0y
+0x
+0w
+0v
+1u
+0t
+0s
+0r
+0q
+0p
+0o
+0n
+0m
+0l
+0k
+0j
+0i
+0h
+0g
+0f
+0e
+0d
+0c
+0b
+0a
+0`
+0_
+0^
+0]
+0\
+0[
+0Z
+0Y
+0X
+0W
+0V
+0T
+1S
+1R
+0Q
+0P
+1O
+0N
+1M
+0L
+0K
+0J
+0I
+1H
+0G
+0F
+1E
+1D
+0C
+0B
+0A
+0@
+1?
+0>
+0=
+0<
+1;
+0:
+09
+08
+07
+b0 9!
+b0 :!
+b0 ;!
+b0 <!
+b0 2
+b0 1
+b0 0
+b0 /
+14
+03
+1=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111110111111 .
+#50000
+1!
+13
+0=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111110111111 8!
+b1010 9!
+b1010 /
+#60000
+b10 ,
+b10100 -
+0!
+06!
+15!
+04!
+13!
+0u
+1t
+03
+1=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111111111111 .
+#70000
+1!
+13
+0=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111111111111 8!
+b10100 :!
+b10100 0
+#80000
+0!
+03
+1=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111110111111 .
+#90000
+1!
+13
+0=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111110111111 8!
+#100000
+0!
+03
+1=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111111111111 .
+#110000
+1!
+13
+0=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111111111111 8!
+#120000
+0!
+03
+1=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111110111111 .
+#130000
+1!
+13
+0=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111110111111 8!
+#140000
+0!
+03
+1=!
+b1111111111111111111111110011111 8!
+b1111111111111111111111111111111 8!
+b1111111111111111111111111111111 .
+#150000
+1!
+13
+0=!
+b1111111111111111111111111011111 8!
+b1111111111111111111111110111111 8!
+b1111111111111111111111111111111 8!
