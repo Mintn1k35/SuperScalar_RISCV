@@ -9,14 +9,24 @@
 `include "Transfer_Execute_WB.v"
 `include "Select_Data_WB.v"
 `include "Control.v"
+`include "Cache_Controller.v"
 module Core(
 	// Input signals
 	input wire			clk,
 	input wire			rst_n,
-	input wire [127:0]	data_in,
-	input wire 			write,
+	input wire			rvalid,
+	input wire			rlast,
+	input wire [63:0]	rdata,
+
 	// Output signals
-	output wire			stop_fetch
+	output wire 		rready,
+	output wire [31:0]	araddr,
+	output wire			arvalid,
+	output wire [1:0]	arburst,
+	output wire [2:0]	arsize,
+	output wire [7:0]	arlen,
+	output wire [3:0]	arcache
+
 );
 
 /// Internal Signal
@@ -48,8 +58,13 @@ module Core(
 	wire [2:0] decode1_hazard_select1, decode1_hazard_select2, decode2_hazard_select1, decode2_hazard_select2;
 	wire jump, jump_accept;
 	wire [31:0] jump_addr;
+	wire write_fifo;
+	wire [127:0] fetch_instr_pc;
 /// ========================================Fetch1=========================================///
-	Fifo Fifo_instance(clk, fifo_rst, data_in, write, fifo_stall, data_out, fifo_full);
+	Cache_Controller Cache_Controller_instance(clk, rst_n, rvalid, rlast, rdata, arready, jump, jump_accept, 
+	jump_addr, stop_fetch, write_fifo, rready, araddr, arvalid, arburst, arsize, arlen, fetch_instr_pc);
+
+	Fifo Fifo_instance(clk, fifo_rst, fetch_instr_pc, write_fifo, fifo_stall, data_out, fifo_full);
 
 /// ========================================Fetch2========================================///
 

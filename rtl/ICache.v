@@ -27,7 +27,7 @@ module ICache(
 		if(!rst_n) begin
 			arready <= 1'b1;
 			rvalid <= 1'b0;
-			rdata <= 'x;
+			rdata <= 32'dx;
 			rlast <= 1'b0;
 		end
 		else begin
@@ -44,7 +44,7 @@ module ICache(
 		if (arvalid & arready & ~(rvalid & !rready)) begin
 			rvalid <= 1'b1;
 			rlast <= 1'b1;
-			rdata <= { rom[araddr[31:0]+1] , rom[araddr[31:0]] };
+			rdata <= { rom[(araddr[31:0]+1)/4] , rom[araddr[31:0]/4] };
 		end
 	end
 

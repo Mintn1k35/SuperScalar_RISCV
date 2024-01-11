@@ -9,8 +9,8 @@ module tb_ICache;
 	logic			arvalid;
 	logic [31:0] 	araddr;
 	logic [1:0] 	arburst;
-	logic [2:0]	arsize;
-	logic [7:0]	arlen;
+	logic [2:0]		arsize;
+	logic [7:0]		arlen;
 	logic 			rready;
 
 
@@ -30,9 +30,14 @@ module tb_ICache;
 	
 	initial begin
 		clk = 1'b0;
+		rst_n = 1'b0;
 		#(20)
-
-
+		rst_n = 1'b1;
+		araddr = 32'd0;
+		rready = 1'b1;
+		arvalid = 1'b1;
+		#(40)
+		araddr = 32'd8;
 		#(100)
 		$finish;
 	end

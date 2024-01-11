@@ -8,9 +8,18 @@ module tb_Core;
 	logic			rst_n;
 	logic [127:0]	data_in;
 	logic 			write;
+	logic			rvalid;
+	logic			rlast;
+	logic [63:0]	rdata;
 
 
-	logic			stop_fetch;
+	logic 		rready;
+	logic [31:0]	araddr;
+	logic			arvalid;
+	logic [1:0]	arburst;
+	logic [2:0]	arsize;
+	logic [7:0]	arlen;
+	logic [3:0]	arcache;
 	
 
 
@@ -23,15 +32,13 @@ module tb_Core;
 	
 	initial begin
 		clk = 1'b0;
-		rst_n = 1'b0;
 		#(20)
-		rst_n = 1'b1;
-		write = 1'b1;
-		data_in = 128'h00014137000000040001E1B700000000;
-		#(1000)
+
+
+		#(100)
 		$finish;
 	end
 
 
-	Core Core_instance(clk, rst_n, data_in, write, stop_fetch);
+	Core Core_instance(clk, rst_n, data_in, write, rvalid, rlast, rdata, rready, araddr, arvalid, arburst, arsize, arlen, arcache,);
 endmodule

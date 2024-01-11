@@ -26,11 +26,11 @@ module Cache_Controller(
 	assign arburst = 2'b00;
 	assign arsize = 3'd2;
 	assign arlen = 8'd0;
-	assign arvalid = arready;
-	assign rready = (stop_fetch) ? 1'b0 : 1'b1;
-	assign write_fifo = (rvalid & rlast) ? 1'b1 : 1'b0;
-	assign fetch_instr_pc = (rvalid & arvalid) ? { rdata[63:32], araddr + 4, rdata[31:0],  araddr} : 128'd0;
-
+	assign arcache = 3'b011;
+	assign rready = (stop_fetch)? 1'b0:1'b1;
+	assign write_fifo = (rvalid & rlast)? 1'b1:1'b0;
+	assign fetch_instr_pc = (rvalid & arvalid) ? {rdata[63:32], araddr + 4, rdata[31:0], araddr} :128'd0;
+	assign arvalid = 1'b1;
 	PC_Control PC_Control_instance(clk, rst_n, stall, jump, jump_accept, jump_addr, araddr);
 
 endmodule: Cache_Controller
