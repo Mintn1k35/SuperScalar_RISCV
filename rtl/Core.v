@@ -60,6 +60,7 @@ module Core(
 	wire [31:0] jump_addr;
 	wire write_fifo;
 	wire [127:0] fetch_instr_pc;
+
 /// ========================================Fetch1=========================================///
 	Cache_Controller Cache_Controller_instance(clk, rst_n, rvalid, rlast, rdata, arready, jump, jump_accept, 
 	jump_addr, stop_fetch, write_fifo, rready, araddr, arvalid, arburst, arsize, arlen, fetch_instr_pc);
@@ -139,7 +140,7 @@ module Core(
 
 //// ======================================= Hazard_Detect =====================================///
 	// Control
-	Control Control_instance(rst_n, fifo_full, buffer_full, jal_schedule, jal_addr, instr1_jump, 
+	Control Control_instance(clk, rst_n, fifo_full, buffer_full, jal_schedule, jal_addr, instr1_jump, 
 	instr1_jump_accept, instr1_jump_addr, instr2_jump, instr2_jump_accept, instr2_jump_addr, 
 	instr1_rs1, instr1_rs2, instr2_rs1, instr2_rs2, rd1_execute, rd2_execute, rd1_wb, 
 	rd2_wb, au_mul_lsu1, au_mul_lsu2, lsu_work, lsu_done, stop_fetch, jump, jump_accept, jump_addr, fifo_rst, 

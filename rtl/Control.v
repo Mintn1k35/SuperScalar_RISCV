@@ -1,6 +1,7 @@
 
 module Control(
 	// Input signals
+	input wire			clk,
 	input wire			rst_n,
 	input wire			fifo_full,
 	input wire			buffer_full,
@@ -26,8 +27,8 @@ module Control(
 	input wire			lsu_done,
 	// Output signals	
 	output reg			stop_fetch,
-	output wire			jump,
-	output wire			jump_accept,
+	output reg			jump,
+	output reg			jump_accept,
 	output reg [31:0]	jump_addr,
 	output reg			fifo_rst,
 	output reg			fifo_stall,
@@ -44,95 +45,100 @@ module Control(
 
 
 	// Signal for Cache_Controller
-	assign jump = jal_schedule | instr1_jump | instr2_jump;
-	assign jump_accept = jal_schedule | instr1_jump_accept | instr2_jump_accept;
+	reg [31:0] jump_addr_tmp;
+	wire jump_tmp = jal_schedule | instr1_jump | instr2_jump;
+	wire jump_accept_tmp = jal_schedule | instr1_jump_accept | instr2_jump_accept;
 	always @(*) begin
 		if(fifo_full) begin
 			stop_fetch = 1'b1;
 		end
 		else stop_fetch = 1'b0;
 
-		if(jump) begin
+		if(jump_tmp) begin
 			if(instr1_jump) begin
 				if(instr1_jump_accept) begin
-					jump_addr = instr1_jump_addr;
+					jump_addr_tmp = instr1_jump_addr;
 				end
 				else begin
-					jump_addr = 32'd0;
+					jump_addr_tmp = 32'd0;
 				end 
 			end
 			else if(instr2_jump) begin
-				if(instr2_jump_accept) jump_addr = instr2_jump_addr;
-				else jump_addr = 32'd0;
+				if(instr2_jump_accept) jump_addr_tmp = instr2_jump_addr;
+				else jump_addr_tmp = 32'd0;
 			end
 			else if(jal_schedule) begin
-				jump_addr = jal_addr;
+				jump_addr_tmp = jal_addr;
 			end
 		end
 	end
 
 	/// Signal for Fifo
+	reg fifo_rst_tmp, fifo_stall_tmp;
 	always @(*) begin
-		if(!rst_n) fifo_rst = 1'b0;
+		if(!rst_n) fifo_rst_tmp = 1'b0;
 		else begin
-			if(instr1_jump & instr1_jump_accept) fifo_rst = 1'b0;
-			else if(instr2_jump & instr2_jump_accept) fifo_rst = 1'b0;
-			else if(jal_schedule) fifo_rst = 1'b0;
-			else fifo_rst = 1'b1;
+			if(instr1_jump & instr1_jump_accept) fifo_rst_tmp = 1'b0;
+			else if(instr2_jump & instr2_jump_accept) fifo_rst_tmp = 1'b0;
+			else if(jal_schedule) fifo_rst_tmp = 1'b0;
+			else fifo_rst_tmp = 1'b1;
 		end
 
 		if(buffer_full) begin
-			fifo_stall = 1'b1;
+			fifo_stall_tmp = 1'b1;
 		end
-		else fifo_stall = 1'b0;
+		else fifo_stall_tmp = 1'b0;
 	end
 
 
 	// Signal for Buffer_Execute
+	reg buffer_rst_tmp, buffer_stall_tmp;
 	always @(*) begin
-		if(!rst_n) buffer_rst = 1'b0;
+		if(!rst_n) buffer_rst_tmp = 1'b0;
 		else begin
-			if(instr1_jump & instr1_jump_accept) buffer_rst = 1'b0;
-			else if(instr2_jump & instr2_jump_accept) buffer_rst = 1'b0;
-			else buffer_rst = 1'b1;
+			if(instr1_jump & instr1_jump_accept) buffer_rst_tmp = 1'b0;
+			else if(instr2_jump & instr2_jump_accept) buffer_rst_tmp = 1'b0;
+			else buffer_rst_tmp = 1'b1;
 		end
 
 		if(lsu_work) begin
 			if(!lsu_done) buffer_stall = 1'b1;
-			else buffer_stall = 1'b0;
+			else buffer_stall_tmp = 1'b0;
 		end
-		else buffer_stall = 1'b0;
+		else buffer_stall_tmp = 1'b0;
 	end
 
 	// Signal for Transfer_Decode_Execute
+	reg transfer_decode1_rst_tmp, transfer_decode2_rst_tmp;
 	always @(*) begin
 		if(!rst_n) begin
-			transfer_decode1_rst = 1'b0;
-			transfer_decode2_rst = 1'b0;
+			transfer_decode1_rst_tmp = 1'b0;
+			transfer_decode2_rst_tmp = 1'b0;
 		end
 		else begin
 			if(lsu_work && !lsu_done) begin
-				transfer_decode1_rst = 1'b0;
-				transfer_decode2_rst = 1'b0;
+				transfer_decode1_rst_tmp = 1'b0;
+				transfer_decode2_rst_tmp = 1'b0;
 			end
 			else begin
-				if(instr1_jump) transfer_decode1_rst = 1'b0;
-				else transfer_decode1_rst = 1'b1;
+				if(instr1_jump) transfer_decode1_rst_tmp = 1'b0;
+				else transfer_decode1_rst_tmp = 1'b1;
 
-				if(instr2_jump) transfer_decode2_rst = 1'b0;
-				else transfer_decode2_rst = 1'b1;
+				if(instr2_jump) transfer_decode2_rst_tmp = 1'b0;
+				else transfer_decode2_rst_tmp = 1'b1;
 			end
 		end
 	end
 
 	// Signal for Transfer_Execute_WB
+	reg transfer_execute_rst_tmp;
 	always @(*) begin
 		if(!rst_n) begin
-			transfer_execute_rst = 1'b0;
+			transfer_execute_rst_tmp = 1'b0;
 		end
 		else begin
-			if(lsu_work & !lsu_done) transfer_execute_rst = 1'b0;
-			else transfer_execute_rst = 1'b1;
+			if(lsu_work & !lsu_done) transfer_execute_rst_tmp = 1'b0;
+			else transfer_execute_rst_tmp = 1'b1;
 		end
 	end
 
@@ -273,6 +279,34 @@ module Control(
 			else decode2_hazard_select2 = 3'd0;
 		end
 		else decode2_hazard_select2 = 3'd0;
+	end
+
+
+	always @(posedge clk or negedge rst_n) begin
+		if(!rst_n) begin
+			jump <= 1'b0;
+			jump_accept <= 1'b0;
+			jump_addr <= 32'd0;
+			fifo_rst <= 1'b0;
+			fifo_stall <= 1'b0;
+			buffer_rst <= 1'b0;
+			buffer_stall <= 1'b0;
+			transfer_decode1_rst <= 1'b0;
+			transfer_decode2_rst <= 1'b0;
+			transfer_execute_rst <= 1'b0;
+		end
+		else begin
+			jump <= jump_tmp;
+			jump_accept <= jump_accept_tmp;
+			jump_addr <= jump_addr_tmp;
+			fifo_rst <= fifo_rst_tmp;
+			fifo_stall <= fifo_stall_tmp;
+			buffer_rst <= buffer_rst_tmp;
+			buffer_stall <= buffer_stall_tmp;
+			transfer_decode1_rst <= transfer_decode1_rst_tmp;
+			transfer_decode2_rst <= transfer_decode2_rst_tmp;
+			transfer_execute_rst <= transfer_execute_rst_tmp;
+		end
 	end
 
 endmodule: Control

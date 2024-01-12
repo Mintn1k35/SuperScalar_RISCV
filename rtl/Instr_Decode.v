@@ -264,6 +264,65 @@ module Instr_Decode(
 				operand1_data = instr_pc;
 				operand2_data = imm_extend;
 			end
+			7'b1100011: begin // Branch-type
+				reg_write = 1'b0;
+				au_type = 1'b0;
+				mul_type = 1'b0;
+				lsu_type = 1'b0;
+				execute_type = 5'd0;
+				case(hazard_select1)
+					3'd0: begin // rs1 = regfile
+						operand1_data = data1_regfile;
+					end
+					3'd1: begin // rs1 = rd1_au_excute
+						operand1_data = data1_au;
+					end
+					3'd2: begin // rs1 = rd2_au_execute
+						operand1_data = data2_au;
+					end
+					3'd3: begin // rs1 = rd1_mul_execute
+						operand1_data = data1_mul;
+					end
+					3'd4: begin // rs1 = rd2_mul_execute
+						operand1_data = data2_mul;
+					end
+					3'd5: begin // rs1 = rd_lsu_excute
+						operand1_data = data_lsu;
+					end
+					3'd6: begin // rs1 = rd1_wb
+						operand1_data = data1_wb;
+					end
+					3'd7: begin // rs1 = rd2_wb
+						operand1_data = data2_wb;
+					end
+				endcase
+				case(hazard_select2)
+					3'd0: begin // rs2 = regfile
+						operand2_data = data1_regfile;
+					end
+					3'd1: begin // rs2 = rd1_au_excute
+						operand2_data = data1_au;
+					end
+					3'd2: begin // rs2 = rd2_au_execute
+						operand2_data = data2_au;
+					end
+					3'd3: begin // rs2 = rd1_mul_execute
+						operand2_data = data1_mul;
+					end
+					3'd4: begin // rs2 = rd2_mul_execute
+						operand2_data = data2_mul;
+					end
+					3'd5: begin // rs2 = rd_lsu_excute
+						operand2_data = data_lsu;
+					end
+					3'd6: begin // rs2 = rd1_wb
+						operand2_data = data1_wb;
+					end
+					3'd7: begin // rs2 = rd2_wb
+						operand2_data = data2_wb;
+					end
+				endcase
+			end
 			default: begin
 				reg_write = 1'b0;
 				au_type = 1'b0;

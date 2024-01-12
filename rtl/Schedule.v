@@ -70,17 +70,25 @@ module Schedule(
 		else begin
 			jal = 1'b0;
 			jal_addr = 32'd0;
-			if(((data2_rs1 == data1_rd) && (data2_rs1 != 5'd0)) | ((data2_rs2 == data1_rd) && (data2_rs2 != 5'd0))) begin
-				write1 = 1'b0;
-				write2 = 1'b1;
-				instr1 = {64'd0, data1_instr, data1_pc};
-				instr2 = {64'd0, data2_instr, data2_pc};
+			if(fetch_data != 128'd0) begin
+				if(((data2_rs1 == data1_rd) && (data2_rs1 != 5'd0)) | ((data2_rs2 == data1_rd) && (data2_rs2 != 5'd0))) begin
+					write1 = 1'b0;
+					write2 = 1'b1;
+					instr1 = {64'd0, data1_instr, data1_pc};
+					instr2 = {64'd0, data2_instr, data2_pc};
+				end
+				else begin
+					write1 = 1'b1;
+					write2 = 1'b0;
+					instr1 = {data2_instr, data2_pc, data1_instr, data1_pc};
+					instr2 = 127'd0;
+				end
 			end
 			else begin
-				write1 = 1'b1;
+				write1 = 1'b0;
 				write2 = 1'b0;
-				instr1 = {data2_instr, data2_pc, data1_instr, data1_pc};
-				instr2 = 127'd0;
+				instr1 = 128'dx;
+				instr2 = 128'dx;
 			end
 		end
 	end
