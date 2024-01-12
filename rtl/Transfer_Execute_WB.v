@@ -3,7 +3,7 @@ module Transfer_Execute_WB(
 	// Input signals
 	input wire			clk,
 	input wire			rst_n,
-	input wire			stall,
+	// input wire			stall,
 	input wire			reg_write1_execute,
 	input wire			reg_write2_execute,
 	input wire [4:0]	rd1_execute,
@@ -43,19 +43,19 @@ module Transfer_Execute_WB(
 			mul2_wb <= 32'd0;
 			lsu_wb <= 32'd0;
 		end
-		else if(stall) begin
-			reg_write1_wb <= 1'b0;
-			reg_write2_wb <= 1'b0;
-			rd1_wb <= 5'd0;
-			rd2_wb <= 5'd0;
-			au_mul_lsu1_wb <= 3'd0;
-			au_mul_lsu2_wb <= 3'd0;
-			au1_wb <= 32'd0;
-			au2_wb <= 32'd0;
-			mul1_wb <= 32'd0;
-			mul2_wb <= 32'd0;
-			lsu_wb <= 32'd0;
-		end
+		// else if(stall) begin
+		// 	reg_write1_wb <= 1'b0;
+		// 	reg_write2_wb <= 1'b0;
+		// 	rd1_wb <= 5'd0;
+		// 	rd2_wb <= 5'd0;
+		// 	au_mul_lsu1_wb <= 3'd0;
+		// 	au_mul_lsu2_wb <= 3'd0;
+		// 	au1_wb <= 32'd0;
+		// 	au2_wb <= 32'd0;
+		// 	mul1_wb <= 32'd0;
+		// 	mul2_wb <= 32'd0;
+		// 	lsu_wb <= 32'd0;
+		// end
 		else begin
 			reg_write1_wb <= reg_write1_execute;
 			reg_write2_wb <= reg_write2_execute;

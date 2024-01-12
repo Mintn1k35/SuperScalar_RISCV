@@ -40,8 +40,6 @@ module Instr_Decode(
 		case(opcode)
 			7'b0110011: begin // R-type
 				reg_write = 1'b1;
-				au_type = 1'b1;
-				mul_type = 1'b0;
 				lsu_type = 1'b0;
 				case(hazard_select1)
 					3'd0: begin // rs1 = regfile
@@ -96,7 +94,19 @@ module Instr_Decode(
 					end
 				endcase
 				case(funct7)
+					7'b000001: begin
+						au_type = 1'b0;
+						mul_type = 1'b1;
+						case(funct3)
+							3'b000: execute_type = 5'd0; // mul
+							3'b001: execute_type = 5'd1; // mulh
+							3'b100: execute_type = 5'd2; // div
+							3'b110: execute_type = 5'd3; // rem
+						endcase
+					end
 					7'b0000000: begin
+						au_type = 1'b1;
+						mul_type = 1'b0;
 						case(funct3)
 							3'b000: execute_type = 5'd0; // add
 							3'b001: execute_type = 5'd9; // sll
@@ -110,6 +120,8 @@ module Instr_Decode(
 						endcase
 					end
 					7'b0100000: begin // sra/sub
+						au_type = 1'b1;
+						mul_type = 1'b0;
 						case(funct3)
 							3'b000: execute_type = 5'd2; // sub
 							3'b101: execute_type = 5'd13; // sra
@@ -323,6 +335,7 @@ module Instr_Decode(
 					end
 				endcase
 			end
+			
 			default: begin
 				reg_write = 1'b0;
 				au_type = 1'b0;

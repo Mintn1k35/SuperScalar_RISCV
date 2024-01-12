@@ -127,16 +127,16 @@ module Core(
 
 	// LSU module
 
-	Transfer_Execute_WB Transfer_Execute_WB_instance(clk, transfer_execute_rst, stall, reg_write1_execute, reg_write2_execute, 
+	Transfer_Execute_WB Transfer_Execute_WB_instance(clk, transfer_execute_rst, reg_write1_execute, reg_write2_execute, 
 	rd1_execute, rd2_execute, au_mul_lsu1, au_mul_lsu2, au1_result, au2_result, mul1_result, mul2_result, 
 	lsu_result, reg_write1_wb, reg_write2_wb, rd1_wb, rd2_wb, au_mul_lsu1_wb, au_mul_lsu2_wb, au1_wb, au2_wb, 
 	mul1_wb, mul2_wb, lsu_wb);
 
 /// =========================================WB=================================================//
 
-	Select_Data_WB Select_Data_WB_instance1(au1_result, mul1_result, lsu_result, au_mul_lsu1_wb, data1_wb);
+	Select_Data_WB Select_Data_WB_instance1(au1_wb, mul1_wb, lsu_wb, au_mul_lsu1_wb, data1_wb);
 
-	Select_Data_WB Select_Data_WB_instance2(au2_result, mul2_result, lsu_result, au_mul_lsu2_wb, data2_wb);
+	Select_Data_WB Select_Data_WB_instance2(au2_wb, mul1_wb, lsu_wb, au_mul_lsu2_wb, data2_wb);
 
 //// ======================================= Hazard_Detect =====================================///
 	// Control

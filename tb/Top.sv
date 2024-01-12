@@ -40,7 +40,7 @@ module tb_Top;
 		jalr_jcond = 1'b1;
 		#(40)
 		jalr_jcond = 1'b0;
-		#(100)
+		#(1000)
 		$finish;
 	end
 
