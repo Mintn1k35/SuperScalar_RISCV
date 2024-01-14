@@ -7,6 +7,8 @@ module Transfer_Decode_Execute(
 	input wire [31:0]	operand1_decode,
 	input wire [31:0]	operand2_decode,
 	input wire			reg_write_decode,
+	input wire			mem_write_decode,
+	input wire [31:0]	write_mem_data_decode,
 	input wire [4:0]	rd_decode,
 	input wire [4:0]	execute_type_decode,
 	input wire 			au_decode,
@@ -16,6 +18,8 @@ module Transfer_Decode_Execute(
 	output reg [31:0]	operand1_execute,
 	output reg [31:0]	operand2_execute,
 	output reg			reg_write_execute,
+	output reg			mem_write_execute,
+	output reg [31:0]	write_mem_data_execute,
 	output reg [4:0]	rd_execute,
 	output reg [4:0]	execute_type_execute,
 	output reg			au_execute,
@@ -28,6 +32,8 @@ module Transfer_Decode_Execute(
 			operand1_execute <= 32'd0;
 			operand2_execute <= 32'd0;
 			reg_write_execute <= 1'b0;
+			mem_write_execute <= 1'b0;
+			write_mem_data_execute <= 32'd0;
 			rd_execute <= 5'd0;
 			execute_type_execute <= 5'd0;
 			au_execute <= 1'b0;
@@ -38,6 +44,8 @@ module Transfer_Decode_Execute(
 			operand1_execute <= operand1_execute;
 			operand2_execute <= operand2_execute;
 			reg_write_execute <= reg_write_execute;
+			mem_write_execute <= mem_write_execute;
+			write_mem_data_execute <= write_mem_data_execute;
 			rd_execute <= rd_execute;
 			execute_type_execute <= execute_type_execute;
 			au_execute <= au_execute;
@@ -48,6 +56,8 @@ module Transfer_Decode_Execute(
 			operand1_execute <= operand1_decode;
 			operand2_execute <= operand2_decode;
 			reg_write_execute <= reg_write_decode;
+			mem_write_execute <= mem_write_decode;
+			write_mem_data_execute <= write_mem_data_decode;
 			rd_execute <= rd_decode;
 			execute_type_execute <= execute_type_decode;
 			au_execute <= au_decode;

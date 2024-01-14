@@ -18,6 +18,8 @@ module Instr_Decode(
 	output reg [31:0]	operand1_data,
 	output reg [31:0]	operand2_data,
 	output reg			reg_write,
+	output reg			write_mem,
+	output reg [31:0]	write_mem_data,
 	output reg [4:0]	execute_type,
 	output reg			au_type,
 	output reg			mul_type,
@@ -40,6 +42,8 @@ module Instr_Decode(
 		case(opcode)
 			7'b0110011: begin // R-type
 				reg_write = 1'b1;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				lsu_type = 1'b0;
 				case(hazard_select1)
 					3'd0: begin // rs1 = regfile
@@ -132,6 +136,8 @@ module Instr_Decode(
 			end
 			7'b0010011: begin // I-type
 				reg_write = 1'b1;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b1;
 				mul_type = 1'b0;
 				lsu_type = 1'b0;
@@ -182,6 +188,8 @@ module Instr_Decode(
 			end
 			7'b0000011: begin // Load-type
 				reg_write = 1'b1;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b0;
 				mul_type = 1'b0;
 				lsu_type = 1'b1;
@@ -222,6 +230,7 @@ module Instr_Decode(
 			end
 			7'b0100011: begin //Store-Type
 				reg_write = 1'b0;
+				write_mem = 1'b1;
 				au_type = 1'b0;
 				mul_type = 1'b0;
 				lsu_type = 1'b1;
@@ -252,6 +261,32 @@ module Instr_Decode(
 					end
 				endcase
 				operand2_data = imm_extend;
+				case(hazard_select2)
+					3'd0: begin // rs2 = regfile
+						write_mem_data = data1_regfile;
+					end
+					3'd1: begin // rs2 = rd1_au_excute
+						write_mem_data = data1_au;
+					end
+					3'd2: begin // rs2 = rd2_au_execute
+						write_mem_data = data2_au;
+					end
+					3'd3: begin // rs2 = rd1_mul_execute
+						write_mem_data = data1_mul;
+					end
+					3'd4: begin // rs2 = rd2_mul_execute
+						write_mem_data = data2_mul;
+					end
+					3'd5: begin // rs2 = rd_lsu_excute
+						write_mem_data = data_lsu;
+					end
+					3'd6: begin // rs2 = rd1_wb
+						write_mem_data = data1_wb;
+					end
+					3'd7: begin // rs2 = rd2_wb
+						write_mem_data = data2_wb;
+					end
+				endcase
 				case(funct3)
 					3'b000: execute_type = 5'd5; // sb
 					3'b001: execute_type = 5'd6; // sh
@@ -260,6 +295,8 @@ module Instr_Decode(
 			end
 			7'b0110111: begin // lui
 				reg_write = 1'b1;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b1;
 				mul_type = 1'b0;
 				lsu_type = 1'b0;
@@ -269,6 +306,8 @@ module Instr_Decode(
 			end
 			7'b0010111: begin // auipc
 				reg_write = 1'b1;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b1;
 				mul_type = 1'b0;
 				lsu_type = 1'b0;
@@ -278,6 +317,8 @@ module Instr_Decode(
 			end
 			7'b1100011: begin // Branch-type
 				reg_write = 1'b0;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b0;
 				mul_type = 1'b0;
 				lsu_type = 1'b0;
@@ -335,9 +376,10 @@ module Instr_Decode(
 					end
 				endcase
 			end
-			
 			default: begin
 				reg_write = 1'b0;
+				write_mem = 1'b0;
+				write_mem_data = 32'd0;
 				au_type = 1'b0;
 				mul_type = 1'b0;
 				lsu_type = 1'b0;

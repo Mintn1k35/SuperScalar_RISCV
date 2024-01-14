@@ -74,7 +74,7 @@ module Control(
 	end
 
 	/// Signal for Fifo
-	reg fifo_rst_tmp, fifo_stall_tmp;
+	reg fifo_rst_tmp;
 	always @(*) begin
 		if(!rst_n) fifo_rst_tmp = 1'b0;
 		else begin
@@ -85,14 +85,14 @@ module Control(
 		end
 
 		if(buffer_full) begin
-			fifo_stall_tmp = 1'b1;
+			fifo_stall = 1'b1;
 		end
-		else fifo_stall_tmp = 1'b0;
+		else fifo_stall = 1'b0;
 	end
 
 
 	// Signal for Buffer_Execute
-	reg buffer_rst_tmp, buffer_stall_tmp;
+	reg buffer_rst_tmp;
 	always @(*) begin
 		if(!rst_n) buffer_rst_tmp = 1'b0;
 		else begin
@@ -103,9 +103,9 @@ module Control(
 
 		if(lsu_work) begin
 			if(!lsu_done) buffer_stall = 1'b1;
-			else buffer_stall_tmp = 1'b0;
+			else buffer_stall = 1'b0;
 		end
-		else buffer_stall_tmp = 1'b0;
+		else buffer_stall = 1'b0;
 	end
 
 	// Signal for Transfer_Decode_Execute
@@ -300,9 +300,7 @@ module Control(
 			jump_accept <= jump_accept_tmp;
 			jump_addr <= jump_addr_tmp;
 			fifo_rst <= fifo_rst_tmp;
-			fifo_stall <= fifo_stall_tmp;
 			buffer_rst <= buffer_rst_tmp;
-			buffer_stall <= buffer_stall_tmp;
 			transfer_decode1_rst <= transfer_decode1_rst_tmp;
 			transfer_decode2_rst <= transfer_decode2_rst_tmp;
 			transfer_execute_rst <= transfer_execute_rst_tmp;

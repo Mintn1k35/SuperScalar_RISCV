@@ -6,20 +6,45 @@ module tb_Core;
 
 	logic			clk;
 	logic			rst_n;
-	logic [127:0]	data_in;
-	logic 			write;
-	logic			rvalid;
-	logic			rlast;
-	logic [63:0]	rdata;
+	logic			Irvalid;
+	logic			Irlast;
+	logic [63:0]	Irdata;
+	logic			Dawready;
+	logic 			Dawready;
+	logic [1:0]	Dbresp;
+	logic 			Dbvalid;
+	logic			Dwready;
+	logic 			Darready;
+	logic [31:0]	Drdata;
+	logic 			Drlast;
+	logic 			Drvalid;
 
 
-	logic 		rready;
-	logic [31:0]	araddr;
-	logic			arvalid;
-	logic [1:0]	arburst;
-	logic [2:0]	arsize;
-	logic [7:0]	arlen;
-	logic [3:0]	arcache;
+	logic 		Irready;
+	logic [31:0]	Iaraddr;
+	logic			Iarvalid;
+	logic [1:0]	Iarburst;
+	logic [2:0]	Iarsize;
+	logic [7:0]	Iarlen;
+	logic [3:0]	Iarcache;
+	logic [31:0]	Dawaddr;
+	logic [1:0]	Dawburst;
+	logic [3:0]	Dawcache;
+	logic [7:0]	Dawlen;
+	logic [2:0]	Dawsize;
+	logic 			Dawvalid;
+	logic 			Dbready;
+	logic [31:0]	Dwdata;
+	logic 			Dwlast;
+	logic [3:0]	Dwstrb;
+	logic 			Dwvalid;
+	logic [31:0]	Daraddr;
+	logic [1:0]	Darburst;
+	logic [3:0]	Darcache;
+	logic [7:0]	Darlen;
+	logic [2:0]	Darsize;
+	logic 			Darvalid;
+	logic 			Drready;
 	
 
 
@@ -40,5 +65,5 @@ module tb_Core;
 	end
 
 
-	Core Core_instance(clk, rst_n, data_in, write, rvalid, rlast, rdata, rready, araddr, arvalid, arburst, arsize, arlen, arcache,);
+	Core Core_instance(clk, rst_n, Irvalid, Irlast, Irdata, Dawready, Dawready, Dbresp, Dbvalid, Dwready, Darready, Drdata, Drlast, Drvalid, Irready, Iaraddr, Iarvalid, Iarburst, Iarsize, Iarlen, Iarcache Dawaddr, Dawburst, Dawcache, Dawlen, Dawsize, Dawvalid, Dbready, Dwdata, Dwlast, Dwstrb, Dwvalid, Daraddr, Darburst, Darcache, Darlen, Darsize, Darvalid, Drready);
 endmodule

@@ -13,17 +13,19 @@ module Top(
 	output wire [63:0] fetch_instr_pc
 );
 
-	wire [31:0] araddr;
-	wire [63:0] rdata;
-	wire rready, arready, rlast;
-	wire [1:0] arburst;
-	wire [2:0] arsize;
-	wire [7:0] arlen;
+	wire [31:0] Iaraddr;
+	wire [63:0] Irdata;
+	wire Irready, Iarready, Irlast;
+	wire [1:0] Iarburst;
+	wire [2:0] Iarsize;
+	wire [7:0] Iarlen;
 
-	Core Core_instance(clk, rst_n, rvalid, rlast, rdata, rready, araddr, arvalid, arburst, 
-	arsize, arlen, arcache);
+	Core Core_instance(clk, rst_n, Irvalid, Irlast, Irdata, Dawready, Dbresp, Dbvalid, Dwready, 
+	Darready, Drdata, Drlast, Drvalid, Irready, Iaraddr, Iarvalid, Iarburst, Iarsize, Iarlen, Iarcache, 
+	Dawaddr, Dawburst, Dawcache, Dawlen, Dawsize, Dawvalid, Dbready, Dwdata, Dwlast, Dwstrb, Dwvalid, 
+	Daraddr, Darburst, Darcache, Darlen, Darsize, Darvalid, Drready);
 
-	ICache ICache_instance(clk, rst_n, arvalid, araddr, arburst, arsize, arlen, arready, rready, rvalid, rdata, rlast);
+	ICache ICache_instance(clk, rst_n, Iarvalid, Iaraddr, Iarburst, Iarsize, Iarlen, Iarready, Irready, Irvalid, Irdata, Irlast);
 endmodule: Top
 
 

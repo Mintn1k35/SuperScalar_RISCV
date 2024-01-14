@@ -10,23 +10,48 @@
 `include "Select_Data_WB.v"
 `include "Control.v"
 `include "Cache_Controller.v"
+`include "LSU.v"
 module Core(
 	// Input signals
 	input wire			clk,
 	input wire			rst_n,
-	input wire			rvalid,
-	input wire			rlast,
-	input wire [63:0]	rdata,
-
+	input wire			Irvalid,
+	input wire			Irlast,
+	input wire [63:0]	Irdata,
+	input wire			Dawready,
+	input wire [1:0]	Dbresp,
+	input wire 			Dbvalid,
+	input wire			Dwready,
+	input wire 			Darready,
+	input wire [31:0]	Drdata,
+	input wire 			Drlast,
+	input wire 			Drvalid,
 	// Output signals
-	output wire 		rready,
-	output wire [31:0]	araddr,
-	output wire			arvalid,
-	output wire [1:0]	arburst,
-	output wire [2:0]	arsize,
-	output wire [7:0]	arlen,
-	output wire [3:0]	arcache
-
+	output wire 		Irready,
+	output wire [31:0]	Iaraddr,
+	output wire			Iarvalid,
+	output wire [1:0]	Iarburst,
+	output wire [2:0]	Iarsize,
+	output wire [7:0]	Iarlen,
+	output wire [3:0]	Iarcache,
+	output wire [31:0]	Dawaddr,
+	output wire [1:0]	Dawburst,
+	output wire [3:0]	Dawcache,
+	output wire [7:0]	Dawlen,
+	output wire [2:0]	Dawsize,
+	output reg 			Dawvalid,
+	output reg 			Dbready,
+	output wire [31:0]	Dwdata,
+	output reg 			Dwlast,
+	output reg [3:0]	Dwstrb,
+	output reg 			Dwvalid,
+	output wire [31:0]	Daraddr,
+	output wire [1:0]	Darburst,
+	output wire [3:0]	Darcache,
+	output wire [7:0]	Darlen,
+	output wire [2:0]	Darsize,
+	output reg 			Darvalid,
+	output reg 			Drready
 );
 
 /// Internal Signal
@@ -60,10 +85,12 @@ module Core(
 	wire [31:0] jump_addr;
 	wire write_fifo;
 	wire [127:0] fetch_instr_pc;
+	wire mem_write1, mem_write2, mem_write1_execute, mem_write2_execute;
+	wire [31:0] mem_write_data1, mem_write_data2, mem_write_data1_ex, mem_write_data2_ex;
 
 /// ========================================Fetch1=========================================///
-	Cache_Controller Cache_Controller_instance(clk, rst_n, rvalid, rlast, rdata, arready, jump, jump_accept, 
-	jump_addr, stop_fetch, write_fifo, rready, araddr, arvalid, arburst, arsize, arlen, fetch_instr_pc);
+	Cache_Controller Cache_Controller_instance(clk, rst_n, Irvalid, Irlast, Irdata, Iarready, jump, jump_accept, 
+	jump_addr, stop_fetch, write_fifo, Irready, Iaraddr, Iarvalid, Iarburst, Iarsize, Iarlen, fetch_instr_pc);
 
 	Fifo Fifo_instance(clk, fifo_rst, fetch_instr_pc, write_fifo, fifo_stall, data_out, fifo_full);
 
@@ -78,22 +105,22 @@ module Core(
 
 	Instr_Decode Instr_Decode_instance1(execute_instr1, instr1_rs1_data, instr1_rs2_data, au1_result, au2_result, 
 	mul1_result, mul2_result, lsu_result, data1_wb, data2_wb, decode1_hazard_select1, decode1_hazard_select2, instr1_operand1_data, 
-	instr1_operand2_data, reg_write1, execute_type1, au1_type, mul1_type, lsu1_type, instr1_jump, instr1_jump_accept,
+	instr1_operand2_data, reg_write1, mem_write1, mem_write_data1, execute_type1, au1_type, mul1_type, lsu1_type, instr1_jump, instr1_jump_accept,
 	instr1_jump_addr);
 
 	Transfer_Decode_Execute Transfer_Decode_Execute_instance1(clk, transfer_decode1_rst, stall, instr1_operand1_data, 
-	instr1_operand2_data, reg_write1, rd1, execute_type1, au1_type, mul1_type, lsu1_type, 
-	instr1_operand1, instr1_operand2, reg_write1_execute, rd1_execute, execute1_type, au_mul_lsu1[2], 
+	instr1_operand2_data, reg_write1, mem_write1, mem_write_data1, rd1, execute_type1, au1_type, mul1_type, lsu1_type, 
+	instr1_operand1, instr1_operand2, reg_write1_execute, mem_write1_execute, mem_write_data1_ex, rd1_execute, execute1_type, au_mul_lsu1[2], 
 	au_mul_lsu1[1], au_mul_lsu1[0]);
 
 	Instr_Decode Instr_Decode_instance2(execute_instr2, instr2_rs1_data, instr2_rs2_data, au1_result, au2_result, 
 	mul1_result, mul2_result, lsu_result, data1_wb, data2_wb, decode2_hazard_select1, decode2_hazard_select2, instr2_operand1_data, 
-	instr2_operand2_data, reg_write2, execute_type2, au2_type, mul2_type, lsu2_type, instr2_jump, instr2_jump_accept,
+	instr2_operand2_data, reg_write2, mem_write2, mem_write_data2, execute_type2, au2_type, mul2_type, lsu2_type, instr2_jump, instr2_jump_accept,
 	instr2_jump_addr);
 
 	Transfer_Decode_Execute Transfer_Decode_Execute_instance2(clk, transfer_decode2_rst, stall, instr2_operand1_data, 
-	instr2_operand2_data, reg_write2, rd2, execute_type2, au2_type, mul2_type, lsu2_type, 
-	instr2_operand1, instr2_operand2, reg_write2_execute, rd2_execute, execute2_type, au_mul_lsu2[2], 
+	instr2_operand2_data, reg_write2, mem_write2, mem_write_data2, rd2, execute_type2, au2_type, mul2_type, lsu2_type, 
+	instr2_operand1, instr2_operand2, reg_write2_execute, mem_write2_execute, mem_write_data2_ex, rd2_execute, execute2_type, au_mul_lsu2[2], 
 	au_mul_lsu2[1], au_mul_lsu2[0]);
 
 	Register_File Register_File_instance(clk, rst_n, instr1_rs1, instr1_rs2, instr2_rs1, instr2_rs2, reg_write1_wb, 
@@ -125,7 +152,13 @@ module Core(
 
 	Mul_Div Mul_Div_instance2(mul2_operand1, mul2_operand2, mul2_execute, mul2_result);
 
-	// LSU module
+	wire lsu_start = au_mul_lsu1[0];
+
+
+	LSU LSU_instance(clk, rst_n, instr1_operand1, instr1_operand2, mem_write1_execute, mem_write_data1_ex, lsu_start, execute1_type, 
+	Dawready, Dbresp, Dbvalid, Dwready, Darready, Drdata, Drlast, Drvalid, lsu_work, lsu_done, lsu_result, Dawaddr, Dawburst, 
+	Dawcache, Dawlen, Dawsize, Dawvalid, Dbready, Dwdata, Dwlast, Dwstrb, Dwvalid, Daraddr, Darburst, Darcache, Darlen, Darsize, 
+	Darvalid, Drready);
 
 	Transfer_Execute_WB Transfer_Execute_WB_instance(clk, transfer_execute_rst, reg_write1_execute, reg_write2_execute, 
 	rd1_execute, rd2_execute, au_mul_lsu1, au_mul_lsu2, au1_result, au2_result, mul1_result, mul2_result, 
