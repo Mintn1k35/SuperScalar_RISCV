@@ -39,19 +39,19 @@ module Core(
 	output wire [3:0]	Dawcache,
 	output wire [7:0]	Dawlen,
 	output wire [2:0]	Dawsize,
-	output reg 			Dawvalid,
-	output reg 			Dbready,
+	output wire 		Dawvalid,
+	output wire 		Dbready,
 	output wire [31:0]	Dwdata,
-	output reg 			Dwlast,
-	output reg [3:0]	Dwstrb,
-	output reg 			Dwvalid,
+	output wire 		Dwlast,
+	output wire [3:0]	Dwstrb,
+	output wire 		Dwvalid,
 	output wire [31:0]	Daraddr,
 	output wire [1:0]	Darburst,
 	output wire [3:0]	Darcache,
 	output wire [7:0]	Darlen,
 	output wire [2:0]	Darsize,
-	output reg 			Darvalid,
-	output reg 			Drready
+	output wire 		Darvalid,
+	output wire 		Drready
 );
 
 /// Internal Signal

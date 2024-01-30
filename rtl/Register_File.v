@@ -14,10 +14,10 @@ module Register_File(
 	input wire [31:0]	write1_data,
 	input wire [31:0]	write2_data,
 	// Output signals	
-	output reg [31:0]	instr1_rs1_data,
-	output reg [31:0]	instr1_rs2_data,
-	output reg [31:0]	instr2_rs1_data,
-	output reg [31:0]	instr2_rs2_data
+	output wire [31:0]	instr1_rs1_data,
+	output wire [31:0]	instr1_rs2_data,
+	output wire [31:0]	instr2_rs1_data,
+	output wire [31:0]	instr2_rs2_data
 );
 	reg [31:0] reg_data[31:0];
 

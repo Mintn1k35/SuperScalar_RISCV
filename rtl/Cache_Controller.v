@@ -35,7 +35,7 @@ module Cache_Controller(
 		if(!rst_n) begin
 			arvalid = 1'b0;
 		end
-		if (araddr !== 32'bz) begin
+		else if (araddr !== 32'bz) begin
 			arvalid = 1'b1;
 			if (arready == 1'b1) arvalid = 1'b1;
 		end
